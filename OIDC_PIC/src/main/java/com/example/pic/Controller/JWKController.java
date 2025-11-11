@@ -1,0 +1,56 @@
+package com.example.pic.Controller;
+
+import java.security.PublicKey;
+import java.security.interfaces.RSAPublicKey;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * 把公鑰打包成json格式
+ */
+@RestController
+@RequestMapping("/.well-known")
+public class JWKController {
+    @Autowired
+    private PublicKey publicKey;
+    
+    /**
+     * JWKS 端點 - 提供公鑰給 A平台
+     * A平台會自動從這個端點下載公鑰
+     */
+    @GetMapping("/jwks.json")
+    public Map<String, Object> getJwks() {
+        try {
+            RSAPublicKey rsaPublicKey = (RSAPublicKey) publicKey;
+            
+            // 建立 JWK (JSON Web Key)
+            Map<String, Object> jwk = new HashMap<>();
+            jwk.put("kty", "RSA");//key type
+            jwk.put("use", "sig");//key用途 :sign
+            jwk.put("alg", "RS256");//加密算法
+            jwk.put("kid", "key-1");  // Key ID
+            
+            // 將 RSA 公鑰轉為 Base64 URL 編碼
+            jwk.put("n", base64UrlEncode(rsaPublicKey.getModulus().toByteArray()));//modulus 
+            jwk.put("e", base64UrlEncode(rsaPublicKey.getPublicExponent().toByteArray()));//exponent 
+            
+           
+            return Map.of("keys",List.of(jwk));
+            
+        } catch (Exception e) {
+            throw new RuntimeException("生成 JWKS 失敗", e);
+        }
+    }
+    
+    private String base64UrlEncode(byte[] data) {
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(data);
+    }
+
+}
