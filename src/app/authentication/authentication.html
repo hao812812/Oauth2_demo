@@ -1,0 +1,29 @@
+
+<div class="login-container">
+  <div class="card shadow" style="width: 520px; border-radius: 10px">
+    <div class="card-body p-5">
+      <h5 class="text-center mb-4 fw-normal">PIC 將允許「XXX.com.tw」存取以下個人資訊 :</h5>
+
+      <div class="info-block d-flex align-items-start mb-3">
+        <span class="material-symbols-outlined me-3 icon-large">account_circle</span>
+        <div>
+          <div class="fw-semibold">{{name}}</div>
+          <div class="text-muted small">Name </div>
+        </div>
+      </div>
+
+      <div class="info-block d-flex align-items-start">
+        <span class="material-symbols-outlined me-3 icon-large">mail</span>
+        <div>
+          <div class="fw-semibold">{{mail}}</div>
+          <div class="text-muted small">Email address</div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4 d-flex justify-content-center gap-3">
+        <button class="btn btn-primary px-4" (click)="agreeButton()">允許</button>
+        <button class="btn btn-outline-secondary px-4">拒絕</button>
+      </div>
+    </div>
+  </div>
+</div>

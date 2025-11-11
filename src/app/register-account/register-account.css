@@ -1,0 +1,41 @@
+:host {
+  display: flex;
+  justify-content: center;  /* 水平置中 */
+  align-items: center;      /* 垂直置中 */
+  min-height: 100vh;
+  background-color: #10466d;
+}
+
+/* 箭頭動畫 */
+.collapse-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* 當展開時旋轉箭頭 */
+[aria-expanded="true"] .collapse-arrow {
+  transform: rotate(180deg);
+}
+
+/* 第三方登入按鈕樣式 */
+#otherLoginMethods .btn-outline-secondary {
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  color: #333;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.card {
+  width: 140%;
+  height: 700px;
+  border-radius: 1rem;     /* 圓角 */
+  background-color: #fff;  /* 白底 */
+}
+
+
+
+
+

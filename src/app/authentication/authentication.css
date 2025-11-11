@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 滿版高度 */
+  background-color: #10466d;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.card {
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(60, 64, 67, 0.15);
+}
+
+.icon-large {
+  font-size: 36px;
+  color: #5f6368;
+}
+
+h5 {
+  color: #202124;
+}
+
+.fw-semibold {
+  color: #202124;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  border-color: #1a73e8;
+}

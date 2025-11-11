@@ -1,0 +1,143 @@
+<div class="login-container">
+  <div class="card shadow">
+    <div class="card-body p-5">
+      <div style="display: flex; justify-content: center; align-items: center; position: relative">
+        <span
+          class="material-symbols-outlined"
+          style="position: absolute; left: 0; cursor: pointer"
+          routerLink="/login"
+        >
+          arrow_circle_left
+        </span>
+        <h2 class="text-center mb-4 fw-normal">註冊 Register</h2>
+      </div>
+
+      <form [formGroup]="accountGroup" novalidate>
+        <!-- 帳號 -->
+        <div class="mb-3">
+          <label class="form-label small text-muted">
+            帳號 <span class="text-danger">*</span>
+          </label>
+          <input
+            formControlName="userAccount"
+            type="email"
+            class="form-control"
+            placeholder="輸入帳號"
+            [ngClass]="{
+              'is-invalid':
+                accountGroup.get('userAccount')?.invalid && accountGroup.get('userAccount')?.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="accountGroup.get('userAccount')?.hasError('required')"
+          >
+            帳號為必填
+          </div>
+        </div>
+
+        <!-- 帳號 -->
+        <div class="mb-3">
+          <label class="form-label small text-muted">
+            名稱 <span class="text-danger">*</span>
+          </label>
+          <input
+            formControlName="userName"
+            type="email"
+            class="form-control"
+            placeholder="輸入名稱"
+            [ngClass]="{
+              'is-invalid':
+                accountGroup.get('userName')?.invalid && accountGroup.get('userName')?.touched
+            }"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="accountGroup.get('userName')?.hasError('required')"
+          >
+            名稱為必填
+          </div>
+        </div>
+
+        <!-- 常用信箱 -->
+        <div class="mb-3">
+          <label class="form-label small text-muted">
+            常用信箱 <span class="text-danger">*</span>
+          </label>
+          <input
+            formControlName="userMail"
+            type="email"
+            class="form-control"
+            placeholder="輸入信箱"
+            [ngClass]="{
+              'is-invalid':
+                accountGroup.get('userMail')?.invalid && accountGroup.get('userMail')?.touched
+            }"
+          />
+          <div class="invalid-feedback" *ngIf="accountGroup.get('userMail')?.hasError('required')">
+            信箱為必填
+          </div>
+          <div class="invalid-feedback" *ngIf="accountGroup.get('userMail')?.hasError('email')">
+            信箱格式不正確
+          </div>
+        </div>
+
+        <!-- 密碼 -->
+        <div class="mb-3">
+          <label class="form-label small text-muted">
+            密碼 <span class="text-danger">*</span>
+          </label>
+          <input
+            formControlName="userPassword"
+            type="password"
+            class="form-control"
+            placeholder="輸入密碼"
+            [ngClass]="{
+              'is-invalid':
+                accountGroup.get('userPassword')?.invalid &&
+                accountGroup.get('userPassword')?.touched
+            }"
+          />
+          @if (accountGroup.get('userPassword')?.hasError('required')) {
+          <div class="invalid-feedback">密碼為必填</div>
+          } @if (accountGroup.get('userPassword')?.hasError('minlength')) {
+          <div class="invalid-feedback">密碼至少需 6 碼</div>
+          }
+        </div>
+
+        <!-- 確認密碼 -->
+        <div class="mb-3">
+          <label class="form-label small text-muted">
+            確認密碼 <span class="text-danger">*</span>
+          </label>
+          <input
+            formControlName="userPasswordCheck"
+            type="password"
+            class="form-control"
+            placeholder="再次輸入密碼"
+            [ngClass]="{
+        'is-invalid':
+          (accountGroup.get('userPasswordCheck')?.invalid &&
+            accountGroup.get('userPasswordCheck')?.touched) ||
+          accountGroup.errors?.['passwordsMismatch']
+      }"
+          />
+          @if (accountGroup.get('userPasswordCheck')?.hasError('required')) {
+          <div class="invalid-feedback">確認密碼為必填</div>
+          } @if (accountGroup.errors?.['passwordsMismatch']) {
+          <div class="invalid-feedback">密碼不一致</div>
+          }
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-primary w-100"
+          style="margin-top: 10px"
+          (click)="registerButton()"
+        >
+          註冊
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
