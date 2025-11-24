@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.example.client.Dto.ExchangeTokenRequest;
 
 import Dto.commonRes;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
@@ -32,13 +33,13 @@ public interface OAuthService {
 	 * @return
 	 */
 	commonRes<Map<String, Object>> getUserInfoByToken(String accessToken );
+
 	
 	/**
-	 * 免登入
-	 * @param sessionId
+	 * token 檢查
 	 * @return
 	 */
-	commonRes<Map<String, Object>> autoLogin(String sessionId);
+	commonRes<Map<String, Object>> checkToken(HttpServletRequest request);
 	
 
 	

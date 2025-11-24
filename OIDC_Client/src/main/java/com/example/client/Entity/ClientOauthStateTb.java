@@ -1,5 +1,7 @@
 package com.example.client.Entity;
 
+import java.sql.Timestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,6 +14,18 @@ public class ClientOauthStateTb {
     private String state;
     
     private String code_verifier;
+    
+    private Timestamp created_at;
+    
+   
+
+	public Timestamp getCreated_at() {
+		return created_at;
+	}
+
+	public void setCreated_at(Timestamp created_at) {
+		this.created_at = created_at;
+	}
 
 	public String getState() {
 		return state;

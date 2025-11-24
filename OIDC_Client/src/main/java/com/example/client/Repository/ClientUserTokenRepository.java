@@ -6,6 +6,7 @@ import com.example.client.Entity.ClientOauthStateTb;
 import com.example.client.Entity.ClientUserTokenTb;
 
 public interface ClientUserTokenRepository extends JpaRepository<ClientUserTokenTb, String>{
+	
 
 	
 }
