@@ -21,7 +21,7 @@ public class OauthRegisterTb {
 
     private String clientSecret;
 
-    private String redirectUris;
+    private String redirectUri;
 
     private String grantTypes;
 
@@ -33,9 +33,17 @@ public class OauthRegisterTb {
 
     private String createdAt;
     private String updatedAt;
+    
+    
 
     
-    public OauthRegisterTb() {
+    public String getRedirectUri() {
+		return redirectUri;
+	}
+	public void setRedirectUri(String redirectUri) {
+		this.redirectUri = redirectUri;
+	}
+	public OauthRegisterTb() {
     }
     public Long getId() {
         return id;
@@ -61,13 +69,7 @@ public class OauthRegisterTb {
         this.clientSecret = clientSecret;
     }
 
-    public String getRedirectUris() {
-        return redirectUris;
-    }
 
-    public void setRedirectUris(String redirectUris) {
-        this.redirectUris = redirectUris;
-    }
 
     public String getGrantTypes() {
         return grantTypes;

@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import Dto.OauthCode;
-import Dto.RegisterTranrsData;
 import Dto.commonRes;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public interface OauthService {
@@ -17,8 +18,9 @@ public interface OauthService {
 	 * 
 	 * @param request
 	 * @return
+	 * @throws IOException 
 	 */
-	public commonRes<Void> getAuthUrl(Map<String, String> request, HttpServletResponse response);
+	public commonRes<Void> getAuthUrl(Map<String, String> request,HttpServletRequest httpRequest, HttpServletResponse response) throws IOException;
 
 	/**
 	 * user同意授權 回傳code url
@@ -43,6 +45,12 @@ public interface OauthService {
 	 * @return
 	 */
 	public ResponseEntity<Map<String, Object>> getUserInfo(String authHeader);
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public commonRes<Map<String, Object>> revokedSession(@RequestBody Map<String, String> req,HttpServletRequest httpRequest,HttpServletResponse response);
 
 
 }

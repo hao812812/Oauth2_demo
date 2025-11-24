@@ -28,15 +28,15 @@ public class registerMemberRepository {
 	 */
 	public int insertMember(String userAccount, String userMail, String userPassword,String userName) {
 
-		String sql = "INSERT INTO member_register(account,password,mail,create_time,name)"
-				+ "VALUES(:userAccount,:userPassword,:userMail,:createTime,:userName)";
+		String sql = "INSERT INTO member_register(account,password,mail,created_at,name)"
+				+ "VALUES(:userAccount,:userPassword,:userMail,:createdAt,:userName)";
 
 		Map<String, Object> paramsMap = new HashMap<>();
 		paramsMap.put("userAccount", userAccount);
 		paramsMap.put("userPassword", userPassword);
 		paramsMap.put("userMail", userMail);
 		paramsMap.put("userName", userName);
-		paramsMap.put("createTime", LocalDateTime.now());
+		paramsMap.put("createdAt", LocalDateTime.now());
 
 		return namedParameterJdbcTemplate.update(sql, paramsMap);
 

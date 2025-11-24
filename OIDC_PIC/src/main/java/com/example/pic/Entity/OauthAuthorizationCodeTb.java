@@ -17,7 +17,7 @@ public class OauthAuthorizationCodeTb {
 	private String clientId;
 
 	@Column(name = "user_id")
-	private String userId;
+	private Long userId;
 
 	@Column(name = "redirect_uri")
 	private String redirectUri;
@@ -49,11 +49,13 @@ public class OauthAuthorizationCodeTb {
 		this.clientId = clientId;
 	}
 
-	public String getUserId() {
+
+
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

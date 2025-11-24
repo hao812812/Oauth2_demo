@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import Dto.RegisterTranrsData;
 import Dto.commonRes;
 import Dto.memberInfo;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public interface RegisterMemberService {
@@ -22,7 +23,7 @@ public interface RegisterMemberService {
 	 * @return
 	 */
 
-	commonRes<memberInfo> queryMember(RegisterTranrsData request);
+	commonRes<memberInfo> queryMember(RegisterTranrsData request,HttpServletResponse response);
 	
 
 	

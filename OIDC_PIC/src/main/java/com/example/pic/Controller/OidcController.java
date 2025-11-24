@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pic.Service.OauthService;
 import com.example.pic.Service.RegisterMemberService;
-import com.example.pic.ServiceImpl.RegisterMemberImpl;
 import Dto.OauthCode;
 import Dto.RegisterTranrsData;
 import Dto.commonRes;
 import Dto.memberInfo;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
@@ -41,7 +41,6 @@ public class OidcController {
 	 */
 	@PostMapping("/register")
 	public commonRes<Void> register(@RequestBody RegisterTranrsData request){
-		
 		return registerService.insertMember(request);
 	}
 	
@@ -50,16 +49,16 @@ public class OidcController {
 	 * @return
 	 */
 	@PostMapping("/login")
-	public commonRes<memberInfo> login(@RequestBody RegisterTranrsData request){
-		return registerService.queryMember(request);
+	public commonRes<memberInfo> login(@RequestBody RegisterTranrsData request,HttpServletResponse response){
+		return registerService.queryMember(request,response);
 	}
 	
 	/*
 	 * 獲取授權URL
 	 */
-	@GetMapping("/oauth/getAuthorizeUri")
-	public commonRes<Void> getAuthCode(@RequestParam Map<String, String> params,HttpServletResponse response) {
-		return oauthService.getAuthUrl(params,response);
+	@GetMapping("/oauth/authorize")
+	public commonRes<Void> getAuthCode(@RequestParam Map<String, String> params,HttpServletRequest httpRequest,HttpServletResponse response) throws IOException {
+		return oauthService.getAuthUrl(params,httpRequest,response);
 	}
 	
 
@@ -71,7 +70,6 @@ public class OidcController {
 	public commonRes<Void> approve(@RequestParam Map<String, String> params,HttpServletResponse response) throws IOException {
 		 
 		 return oauthService.approveAuthorization(params,response);
-	
 	}
 	
 	/**
@@ -94,7 +92,15 @@ public class OidcController {
 		 return oauthService.getUserInfo(authHeader);
 	}
 	
-
 	
-
+	/**
+	 * revoked 免登入
+	 * @param params
+	 * @return
+	 */
+	@PostMapping("/oauth/revokedSessionId")
+	public commonRes<Map<String, Object>> revokedSession(@RequestBody Map<String, String> req,HttpServletRequest httpRequest,HttpServletResponse response){
+		return oauthService.revokedSession(req,httpRequest,response);
+	}
+	
 }
