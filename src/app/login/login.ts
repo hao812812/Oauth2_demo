@@ -22,6 +22,7 @@ import { apiResponse } from '../interface/memberRegister';
 export class Login implements OnInit {
   captchaUrl: string = '';
   state: string = '';
+  redirectUri: string = '';
   accountGroup = new FormGroup({
     userAccount: new FormControl(''),
     userPassword: new FormControl(''),
@@ -32,6 +33,7 @@ export class Login implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.state = params['state'];
+      this.redirectUri = params['redirect_uri'];
     });
     this.refreshCaptcha();
   }
@@ -44,7 +46,7 @@ export class Login implements OnInit {
       userPassword: this.accountGroup.value.userPassword,
     };
 
-    this.http.post<apiResponse>(url, body).subscribe((data) => {
+    this.http.post<apiResponse>(url, body,{withCredentials:true}).subscribe((data) => {
       if (!data.success) {
         alert(data.message);
         return;
@@ -61,12 +63,15 @@ export class Login implements OnInit {
           name: name,
           id: id,
           state: this.state,
+          redirectUri: this.redirectUri,
         },
       });
     });
   }
 
   refreshCaptcha(): void {
+
+
     this.http
       .get('http://localhost:9090/api/captcha/generate', {
         responseType: 'blob', //二進位檔案

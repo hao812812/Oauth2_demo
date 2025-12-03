@@ -17,6 +17,7 @@ export class Authentication implements OnInit {
   name: string = '';
   id: string = '';
   state: string = '';
+  redirectUri: string = '';
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -25,12 +26,19 @@ export class Authentication implements OnInit {
       this.name = params['name'];
       this.id = params['id'];
       this.state = params['state'];
+      this.redirectUri = params['redirectUri'];
     });
   }
 
   agreeButton() {
     //call 後端 approve api
-    const authorizationUrl = 'http://localhost:9090/api/oauth/approve?'+'user_id='+this.id+'&state='+this.state;
+    const authorizationUrl =
+      'http://localhost:9090/api/oauth/approve?' +
+      'user_id=' +
+      this.id +
+      '&state=' +
+      this.state +
+      '&redirect_uri='+this.redirectUri;
     window.location.href = authorizationUrl;
   }
 }
