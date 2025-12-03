@@ -92,15 +92,16 @@ public class OauthImpl implements OauthService {
 	private OauthUserSessionRepository oauthUserSessionRepository;
 
 	private static final Logger log = LoggerFactory.getLogger(OauthImpl.class);
+	private static final long ACCESS_TOKEN_TTL_SECONDS = 3600; // 1 小時
 
 	/**
-	 * 驗證對方 傳送來的 url 認證
+	 * 驗證對方 傳送來的 url 認證 (ok
 	 */
 	@Override
-	public commonRes<Void> getAuthUrl(Map<String, String> request, HttpServletRequest httpRequest,
-			HttpServletResponse response) throws IOException {
+	public void getAuthUrl(Map<String, String> request, HttpServletRequest httpRequest, HttpServletResponse response)
+			throws IOException {
 
-		log.info("開始接收授權 url");//TODO:log時間、api類型、api回應時間、traceID(共用function)、save by text/db
+		log.info("開始接收授權 url");
 
 		String clientId = request.get("client_id");
 		String redirectUri = request.get("redirect_uri");
@@ -115,22 +116,21 @@ public class OauthImpl implements OauthService {
 		// 驗證 client id是否存在
 		if (clientOpt.isEmpty()) {
 			log.error("無效的client Id={}", clientId);
-			sendBadRequest(response, "invalid_client id");
-			return null;
+			redirectError(response, redirectUri, "invalid_client id");
 		}
 		OauthRegisterTb client = clientOpt.get();
 
 		// 驗證 redirect_uri 是否匹配
 		if (!client.getRedirectUri().equals(redirectUri)) {
 			log.error("無效的invalid_redirect_uri={}", redirectUri);
-			sendBadRequest(response, "invalid_redirect_uri");
-			return null;
+			redirectError(response, redirectUri, "invalid_redirect_uri");
+			return;
 		}
 		// 驗證 response_type
 		if (!"code".equals(client.getResponseTypes())) {
 			log.error("無效的response_type={}", client.getResponseTypes());
-			sendBadRequest(response, "response_type");
-			return null;
+			redirectError(response, redirectUri, "response_type");
+			return;
 		}
 
 		// 驗證 scope
@@ -142,20 +142,20 @@ public class OauthImpl implements OauthService {
 
 		if (!dbScope.containsAll(requestedScope)) {
 			log.error("無效的invalid_scope={}", requestedScope);
-			sendBadRequest(response, "invalid_scope");
-			return null;
+			redirectError(response, redirectUri, "invalid_scope");
+			return;
 		}
 		// 驗證 PKCE
 		if (!"S256".equals(codeChallengeMethod) || codeChallengeMethod == null) {
 			log.error("無效的invalid_pkce={}", codeChallengeMethod);
-			sendBadRequest(response, "invalid_pkce");
-			return null;
+			redirectError(response, redirectUri, "invalid_pkce");
+			return;
 		}
 
 		// 驗證cookie 是否 免登入
 		if (tryAutoLogin(httpRequest, request, response)) {
-			log.info("使用者免登入,已由 noLogin 處理流程");
-			return null;
+			log.info("使用者免登入,已由 tryAutoLogin 處理流程");
+			return;
 		}
 
 		try {
@@ -171,8 +171,9 @@ public class OauthImpl implements OauthService {
 
 		} catch (Exception e) {
 			log.error("寫入 OauthAuthorizeRequestTb 發生錯誤", e);
-			sendBadRequest(response, "db_error");
-			return null;
+			redirectError(response, redirectUri, "db_error");
+			return;
+
 		}
 
 		// 導向b平台 登入頁 (Angular)
@@ -186,33 +187,36 @@ public class OauthImpl implements OauthService {
 					URLEncoder.encode(codeChallengeMethod, StandardCharsets.UTF_8));
 			log.info("redirect OIDC Server會員登入頁面");
 			response.sendRedirect(angularLogin);
+			return;
 
 		} catch (Exception e) {
 			log.error("導向OIDC Server會員登入頁失敗", e);
-			sendBadRequest(response, "redirect_failed");
-			return null;
-		}
+			redirectError(response, redirectUri, "redirect_failed");
 
-		return commonRes.success("url 接收成功");
+			return;
+		}
 	}
 
 	/**
-	 * 同意授權後 傳送 code url 給 client端
+	 * 同意授權後 傳送 code url 給 client端 (ok
 	 */
 	@Override
-	public commonRes<Void> approveAuthorization(Map<String, String> request, HttpServletResponse response)
-			throws IOException {
+	public void approveAuthorization(Map<String, String> request, HttpServletResponse response) throws IOException {
 
 		String state = request.get("state");
 		String userId = request.get("user_id");
+		String redirectUri = request.get("redirect_uri");
+
+		log.info("收到使用者授權同意, state={}, userId={}", state, userId);
 
 		// DB 查找 暫存的 request url 資料
 		Optional<OauthAuthorizeRequestTb> data = oauthAuthorizeReqRepository.findByState(state);
 
 		// db 是否有資料
 		if (data.isEmpty()) {
-			sendBadRequest(response, "search oauth_authorizeRequest DB failed");
-			return null;
+			log.error("找不到暫存的授權請求資料,state:{}", state);
+			redirectError(response, redirectUri, "invalid_request");
+			return;
 		}
 
 		OauthAuthorizeRequestTb urlData = data.get();
@@ -223,49 +227,56 @@ public class OauthImpl implements OauthService {
 		// 設定有效期限（5分鐘）
 		Timestamp expiresAt = Timestamp.from(Instant.now().plus(Duration.ofMinutes(5)));
 
-		// 寫入資料表
-		OauthAuthorizationCodeTb entity = new OauthAuthorizationCodeTb();
-		entity.setCode(code);
-		entity.setClientId(urlData.getClientId());
-		entity.setUserId(Long.parseLong(userId));
-		entity.setRedirectUri(urlData.getRedirectUri());
-		entity.setScope(urlData.getScope());
-		entity.setCodeChallenge(urlData.getCodeChallenge());
-		entity.setCodeChallengeMethod(urlData.getCodeChallengeMethod());
-		entity.setExpiresAt(expiresAt);
-		authorizationCodeRepository.save(entity);
+		try {
+			// 寫入資料表
+			OauthAuthorizationCodeTb entity = new OauthAuthorizationCodeTb();
+			entity.setCode(code);
+			entity.setClientId(urlData.getClientId());
+			entity.setUserId(Long.parseLong(userId));
+			entity.setRedirectUri(urlData.getRedirectUri());
+			entity.setScope(urlData.getScope());
+			entity.setCodeChallenge(urlData.getCodeChallenge());
+			entity.setCodeChallengeMethod(urlData.getCodeChallengeMethod());
+			entity.setExpiresAt(expiresAt);
+			authorizationCodeRepository.save(entity);
+			log.info("成功產生授權碼, code={}, clientId={}, userId={}", code, urlData.getClientId(), userId);
+
+		} catch (Exception e) {
+			log.error("寫入授權碼進DB錯誤,state={}", request.get("state"), e);
+			redirectError(response, redirectUri, "DB_Fail");
+		}
 
 		// redirect 回 A 平台
-		String redirectUrl = String.format("%s?code=%s&state=%s&scope=%s", urlData.getRedirectUri(), code, state,
-				urlData.getScope());
+		String redirectUrl = String.format("%s?code=%s&state=%s", urlData.getRedirectUri(), code, state);
 		response.sendRedirect(redirectUrl);
-		return null;
+		return;
 	}
 
 	/**
-	 * get code 資訊 ，產生access_token、refresh_token return 傳送access_Token 等資料給client端
+	 * Token (ok)
 	 */
 	@Override
 	public commonRes<Map<String, Object>> accessCode(OauthCode request) {
-
+		String grantType = request.getGrant_type();
 		// 驗證 grant_type, 若為refreshToken
-		if ("refresh_token".equals(request.getGrant_type())) {
+		if ("refresh_token".equals(grantType)) {
 			return handleRefreshToken(request);
-		} else if ("authorization_code".equals(request.getGrant_type())) {
+		} else if ("authorization_code".equals(grantType)) {
 			return handleAuthorizationCode(request);
 		} else {
+			log.error("不支援的 grant_type:{}", grantType);
 			return commonRes.error("不支援的 grant_type");
 		}
 	}
 
 	/**
-	 * 解除 平台 免登入綁定
+	 * 解除 平台 免登入綁定(ok
 	 */
 	@Override
-	@Transactional
 	public commonRes<Map<String, Object>> revokedSession(@RequestBody Map<String, String> req,
 			HttpServletRequest httpRequest, HttpServletResponse response) {
 
+		log.info("開始 revokedSession 解除平台免登入");
 		// 取cookie(oidc_session_id)
 		String sessionId = null;
 		Cookie[] cookies = httpRequest.getCookies();
@@ -277,23 +288,26 @@ public class OauthImpl implements OauthService {
 				}
 			}
 		}
-		;
+
+		int deleteRow = oauthUserSessionRepository.deleteBySessionId(sessionId);
 
 		// 刪除OIDC Session
-		if (sessionId != null) {
-			// 刪除 oauth_user_session db session
-			oauthUserSessionRepository.deleteBySessionId(sessionId);
-			// 刪除 browser session
-			ResponseCookie clearCookie = ResponseCookie.from("OIDC_SESSION_ID", "").path("/").maxAge(0).httpOnly(true)
-					.build();
-			response.addHeader(HttpHeaders.SET_COOKIE, clearCookie.toString());
+		if (deleteRow == 0) {
+			log.warn("oauth_User_Session DB 中找不到sessionId={}", sessionId);
+		} else {
+			log.info("成功刪除oauth_User_Session DB session, sessionId={}", sessionId);
 		}
+
+		// 刪除 browser session
+		ResponseCookie clearCookie = ResponseCookie.from("OIDC_SESSION_ID", "").path("/").maxAge(0).httpOnly(true)
+				.build();
+		response.addHeader(HttpHeaders.SET_COOKIE, clearCookie.toString());
 
 		return commonRes.success("解除綁定成功");
 	}
 
 	/**
-	 * 驗證是否先前有登入過
+	 * 驗證是否先前有登入過 (ok
 	 * 
 	 * @param httpRequest
 	 * @param request
@@ -327,16 +341,17 @@ public class OauthImpl implements OauthService {
 		Optional<OauthUserSession> sessionOpt = oauthUserSessionRepository.findBySessionId(sessionId);
 		// session 是否有效
 		if (sessionOpt.isEmpty()) {
-			log.warn("DB找不到sessionId");
+			log.warn("DB找不到sessionId:{}", sessionId);
 			return false;
 		}
 
 		OauthUserSession session = sessionOpt.get();
-		boolean notExpired = session.getExpiresAt().after(new Timestamp(System.currentTimeMillis()));// 沒有過期
+		Instant now = Instant.now();
+		Instant expiredAt = session.getExpiresAt().toInstant();
 
 		// 若session 過期
-		if (!notExpired) {
-			log.warn("session已過期，expiresAt:{}", session.getExpiresAt());
+		if (expiredAt.isBefore(now)) {
+			log.warn("session:{}已過期，expiresAt:{}", session.getSessionId(), session.getExpiresAt());
 			return false;
 		}
 
@@ -344,162 +359,187 @@ public class OauthImpl implements OauthService {
 		String code = UUID.randomUUID().toString();
 		// 5分鐘有效期限
 		Timestamp codeExpires = Timestamp.from(Instant.now().plus(Duration.ofMinutes(5)));
+		try {
+			OauthAuthorizationCodeTb codeEntity = new OauthAuthorizationCodeTb();
+			codeEntity.setCode(code);
+			codeEntity.setClientId(request.get("client_id"));
+			codeEntity.setUserId(session.getUserId());
+			codeEntity.setRedirectUri(request.get("redirect_uri"));
+			codeEntity.setScope(request.get("scope"));
+			codeEntity.setCodeChallenge(request.get("code_challenge"));
+			codeEntity.setCodeChallengeMethod(request.get("code_challenge_method"));
+			codeEntity.setExpiresAt(codeExpires);
+			codeEntity.setUsed(false);
+			authorizationCodeRepository.save(codeEntity);
 
-		OauthAuthorizationCodeTb codeEntity = new OauthAuthorizationCodeTb();
-		codeEntity.setCode(code);
-		codeEntity.setClientId(request.get("client_id"));
-		codeEntity.setUserId(session.getUserId());
-		codeEntity.setRedirectUri(request.get("redirect_uri"));
-		codeEntity.setScope(request.get("scope"));
-		codeEntity.setCodeChallenge(request.get("code_challenge"));
-		codeEntity.setCodeChallengeMethod(request.get("code_challenge_method"));
-		codeEntity.setExpiresAt(codeExpires);
-		codeEntity.setUsed(false);
-		authorizationCodeRepository.save(codeEntity);
-		
-		log.info("建立授權code:{}",codeEntity.getCode());
-
+			log.info("建立授權code:{}", codeEntity.getCode());
+		} catch (Exception e) {
+			log.error("免登入失敗，儲存授權碼失敗", e);
+			return false;
+		}
 		// redirect 回 A 平台
 		String redirectUrl = String.format("%s?code=%s&state=%s&scope=%s", request.get("redirect_uri"), code,
 				request.get("state"), request.get("scope"));
 		response.sendRedirect(redirectUrl);
 		return true;
 
-		
 	}
 
 	/**
-	 * 處理 refresh_token 流程
+	 * 處理 refresh_token 流程(ok)
 	 */
 	private commonRes<Map<String, Object>> handleRefreshToken(OauthCode request) {
+
 		String refreshToken = request.getRefresh_token();
 		String clientId = request.getClient_id();
 		String clientSecret = request.getClient_secret();
+		log.info("開始 refresh_token 流程,clientId={},refreshToken={}", clientId, refreshToken);
 
 		// 查詢 refresh_token
 		Optional<OauthAccessTokenTb> tokenOpt = oauthAccessTokenRepository.findByRefreshToken(refreshToken);
 
 		if (tokenOpt.isEmpty()) {
+			log.error("refreshToken:{} ,查詢oauthAccessToken table 失敗", refreshToken);
 			return commonRes.error("無效的 refresh_token");
 		}
 
 		OauthAccessTokenTb tokenEntity = tokenOpt.get();
 
-		// 驗證是否已撤銷
-		if (tokenEntity.getRevoked()) {
-			return commonRes.error("refresh_token 已被撤銷");
-		}
-
 		// 驗證 refresh_token 是否過期
 		Timestamp now = Timestamp.from(Instant.now());
-		if (tokenEntity.getRefreshToken_expiresAt() != null && tokenEntity.getRefreshToken_expiresAt().before(now)) {
-			return commonRes.error("refresh_token 已過期");
+		Timestamp refreshToken_expired = tokenEntity.getRefreshToken_expiresAt();
+		if (refreshToken_expired != null && refreshToken_expired.before(now)) {
+			log.error("refreshToken:{} 已失效,失效日:{}", refreshToken, refreshToken_expired);
+			return commonRes.error("refresh_token 已失效");
 		}
 
 		// 驗證 client_id
 		if (!tokenEntity.getClientId().equals(clientId)) {
+			log.error("client_id:{} 不匹配", clientId);
 			return commonRes.error("client_id 不匹配");
 		}
 
 		// 驗證 client_secret
-		Optional<OauthRegisterTb> clientOpt = oauthRepository.findByClientId(clientId);
-		if (clientOpt.isEmpty() || !clientOpt.get().getClientSecret().equals(clientSecret)) {
+		Optional<OauthRegisterTb> registerInfoOpt = oauthRepository.findByClientId(clientId);
+		OauthRegisterTb registerInfo = registerInfoOpt.get();
+		if (registerInfoOpt.isEmpty() || !registerInfo.getClientSecret().equals(clientSecret)) {
+			log.error("client_secret:{} 驗證失敗", registerInfo.getClientSecret());
 			return commonRes.error("client_secret 錯誤");
 		}
 
 		// 查詢使用者資訊
 		memberInfo userInfo = registerMemberRepository.queryMemberById(tokenEntity.getUserId());
 		if (userInfo == null) {
+			log.error("refresh_token 流程查無使用者資訊, userId={}", tokenEntity.getUserId());
 			return commonRes.error("查無使用者資訊");
 		}
 
-		long nowMillis = System.currentTimeMillis();
-
 		// 只生成新的 access_token 和 id_token
+		long nowMillis = System.currentTimeMillis();
 		String newAccessToken = UUID.randomUUID().toString();
 
 		String idToken = Jwts.builder().setIssuer("http://localhost:9090")
 				.setSubject(String.valueOf(tokenEntity.getUserId())).setAudience(clientId)
-				.setIssuedAt(new Date(nowMillis)).setExpiration(new Date(nowMillis + 3600_000))// 3600秒
+				.setIssuedAt(new Date(nowMillis)).setExpiration(new Date(nowMillis + ACCESS_TOKEN_TTL_SECONDS * 1000))// 1hr
+																														// 過期
 				.claim("email", userInfo.getMail()).claim("name", userInfo.getName())
 				.signWith(keyPair.getPrivate(), SignatureAlgorithm.RS256).compact();
 
 		// 更新資料庫中的 access_token
 		tokenEntity.setAccessToken(newAccessToken);
-		tokenEntity.setAccessToken_expiresAt(new Timestamp(nowMillis + 3600_000));
+		tokenEntity.setAccessToken_expiresAt(new Timestamp(nowMillis + ACCESS_TOKEN_TTL_SECONDS * 1000));
 		oauthAccessTokenRepository.save(tokenEntity);
 
-		long accessExpiresIn = 3600;// 1小時
+		log.info("refresh_token 流程成功刷新 access_token, userId={}, clientId={}", tokenEntity.getUserId(), clientId);
+
 		// 回傳
 		Map<String, Object> response = new HashMap<>();
 		response.put("access_token", newAccessToken);
 		response.put("id_token", idToken);
 		response.put("token_type", "Bearer");
-		response.put("access_token_expiresAt", accessExpiresIn);
+		response.put("access_token_expiresAt", ACCESS_TOKEN_TTL_SECONDS);
 		return commonRes.success("成功刷新 token", response);
-
 	}
 
 	/**
-	 * 處理 authorization_code 流程
+	 * 處理 authorization_code 流程(ok)
 	 */
+	@Transactional
 	private commonRes<Map<String, Object>> handleAuthorizationCode(OauthCode request) {
 		String code = request.getCode();
 		String clientId = request.getClient_id();
 		String clientSecret = request.getClient_secret();
 		String codeVerifier = request.getCode_verifier();
 
+		long nowMillis = System.currentTimeMillis();
+		Timestamp nowTs = new Timestamp(nowMillis);
+
+		log.info("開始 authorization_code 流程,clientId={},code={}", clientId, code);
+
 		// 查詢並驗證 authorization code
 		Optional<OauthAuthorizationCodeTb> codeOpt = authorizationCodeRepository.findByCode(code);
 		if (codeOpt.isEmpty()) {
+			log.error("oauth_authorize_code Table 中找不到 code={}", code);
 			return commonRes.error("無效的 code");
 		}
 
 		OauthAuthorizationCodeTb codeEntity = codeOpt.get();
 
 		// 驗證 code 是否過期
-		if (codeEntity.getExpiresAt().before(Timestamp.from(Instant.now()))) {
+		Timestamp expireAt = codeEntity.getExpiresAt();
+		if (expireAt == null || expireAt.before(nowTs)) {
+			log.error("code 已失效,code={},expiresAt={}", code, expireAt);
 			return commonRes.error("code 已過期");
 		}
 
 		// 驗證是否已使用
 		if (codeEntity.isUsed()) {
+			log.error("code 已失效,code={},expiresAt={}", code, expireAt);
 			return commonRes.error("code 已被使用");
 		}
 
 		// 驗證 client_id
 		if (!codeEntity.getClientId().equals(clientId)) {
+			log.error("client_id 不匹配, clientId={}", clientId);
 			return commonRes.error("client_id 不匹配");
 		}
 
 		// 驗證 client_secret
 		Optional<OauthRegisterTb> clientOpt = oauthRepository.findByClientId(clientId);
-		if (clientOpt.isEmpty() || clientOpt.get().getClientSecret() == null
-				|| !clientOpt.get().getClientSecret().equals(clientSecret)) {
-			return commonRes.error("client_secret 錯誤或不存在");
+		OauthRegisterTb client = clientOpt.get();
+		if (client.getClientSecret() == null || !client.getClientSecret().equals(clientSecret)) {
+			log.error("client_secret 不匹配,clientId={}", clientId);
+			return commonRes.error("client_secret 不匹配");
 		}
 
 		// 驗證 PKCE
+		if (codeVerifier == null || codeVerifier.isBlank()) {
+			log.error("缺乏 codeVerifier值,clientId={}", clientId);
+			return commonRes.error("缺乏 codeVerifier值");
+		}
+
 		if ("S256".equalsIgnoreCase(codeEntity.getCodeChallengeMethod())) {
 			String expectedChallenge = createHash(codeVerifier);
 			if (!expectedChallenge.equals(codeEntity.getCodeChallenge())) {
+				log.error("code_verifier 驗證失敗");
 				return commonRes.error("code_verifier 驗證失敗");
 			}
 		} else {
-			return commonRes.error("驗證 PKCE 失敗");
+			log.error("不符合S256 PKCE方法,method={}", codeEntity.getCodeChallengeMethod());
+			return commonRes.error("不符合S256 PKCE方法");
 		}
 
 		// 查詢使用者資訊
 		memberInfo userInfo = registerMemberRepository.queryMemberById(codeEntity.getUserId());
 		if (userInfo == null) {
+			log.error("查無使用者資訊,userId={}", codeEntity.getUserId());
 			return commonRes.error("查無使用者資訊");
 		}
 
 		// 標記授權碼為已使用
 		codeEntity.setUsed(true);
 		authorizationCodeRepository.save(codeEntity);
-
-		long nowMillis = System.currentTimeMillis();
+		log.info("authorize_code table 標記為已使用,code={}", code);
 
 		// 生成 tokens
 		String accessToken = UUID.randomUUID().toString();
@@ -523,6 +563,8 @@ public class OauthImpl implements OauthService {
 		entity.setScope(codeEntity.getScope());
 		oauthAccessTokenRepository.save(entity);
 
+		log.info("idToken/refreshToken/accessToken 建立完成");
+
 		// 組裝回應
 		Map<String, Object> response = new HashMap<>();
 		response.put("access_token", accessToken);
@@ -536,32 +578,31 @@ public class OauthImpl implements OauthService {
 	}
 
 	/**
-	 * get access_token return 使用者資訊
+	 * 取得 UserInfo(ok)
 	 */
 	@Override
 	public ResponseEntity<Map<String, Object>> getUserInfo(String authHeader) {
-		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+		if (authHeader == null || !authHeader.startsWith("Bearer")) {
+			log.error("UserInfo 失敗：Authorization Header 缺失或格式錯誤");
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 		}
+		log.info("開始取得 userInfo");
 
 		// 取出access_token
 		String accessToken = authHeader.substring(7);
 
 		// 資料庫驗證access_token
-		Optional<OauthAccessTokenTb> tokenData = oauthAccessTokenRepository.findByAccessToken(accessToken);
-		if (tokenData.isEmpty() || tokenData.get().getRevoked()) {
+		Optional<OauthAccessTokenTb> tokenOpt = oauthAccessTokenRepository.findByAccessToken(accessToken);
+		if (tokenOpt.isEmpty()) {
+			log.error("accessToken:{} 不存在", accessToken);
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "access_token驗證失敗"));
 		}
 
-		OauthAccessTokenTb token = tokenData.get();
+		OauthAccessTokenTb token = tokenOpt.get();
 
-		// 驗證是否被撤銷
-		if (token.getRevoked() != null && token.getRevoked()) {
-			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "access_token 已失效"));
-		}
 		// 驗證 token 有效時間
-		Timestamp now = new Timestamp(System.currentTimeMillis());
-		if (token.getAccessToken_expiresAt().before(now)) {
+		if (token.getAccessToken_expiresAt().toInstant().isBefore(Instant.now())) {
+			log.error("access_token 已過期: {}", accessToken);
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("error", "access_token 已過期"));
 		}
 
@@ -569,8 +610,11 @@ public class OauthImpl implements OauthService {
 		memberInfo userResult = registerMemberRepository.queryMemberById(token.getUserId());
 		// 判斷是否存在
 		if (userResult == null) {
+			log.error("查無此使用者 userId={}", token.getUserId());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "查無使用者"));
 		}
+
+		log.info("userInfo 認證成功，回傳使用者資料 userId={}", userResult.getId());
 
 		// 組裝 回傳 使用者資料
 		Map<String, Object> userInfo = new HashMap<>();
@@ -601,16 +645,12 @@ public class OauthImpl implements OauthService {
 	}
 
 	/**
-	 * 統一導到錯誤頁面
+	 * 錯誤訊息導回給user
 	 */
-	private void sendBadRequest(HttpServletResponse response, String message) {
-		try {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			response.setContentType("application/json;charset=UTF-8");
-			response.getWriter().write("{\"success\":false,\"message\":\"" + message + "\"}");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private void redirectError(HttpServletResponse response, String redirectUri, String error) throws IOException {
+		String url = String.format("%s?error=%s", redirectUri, URLEncoder.encode(error, StandardCharsets.UTF_8));
+
+		response.sendRedirect(url);
 	}
 
 }

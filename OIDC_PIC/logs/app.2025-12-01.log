@@ -1,0 +1,333 @@
+2025-12-01 11:08:59.088 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarting | Starting OidcPICApplication using Java 21.0.8 with PID 28212 (C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC\target\classes started by p10427815 in C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC)
+2025-12-01 11:08:59.123 | INFO  | traceId= | o.s.boot.SpringApplication.logStartupProfileInfo | No active profile set, falling back to 1 default profile: "default"
+2025-12-01 11:09:02.198 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01 11:09:02.352 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Finished Spring Data repository scanning in 132 ms. Found 5 JPA repository interfaces.
+2025-12-01 11:09:03.924 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.initialize | Tomcat initialized with port 9090 (http)
+2025-12-01 11:09:03.951 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing ProtocolHandler ["http-nio-9090"]
+2025-12-01 11:09:03.957 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting service [Tomcat]
+2025-12-01 11:09:03.958 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-01 11:09:04.111 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring embedded WebApplicationContext
+2025-12-01 11:09:04.115 | INFO  | traceId= | o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext | Root WebApplicationContext: initialization completed in 4804 ms
+2025-12-01 11:09:04.738 | INFO  | traceId= | o.h.j.internal.util.LogHelper.logPersistenceUnitInformation | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01 11:09:04.897 | INFO  | traceId= | org.hibernate.Version.logVersion | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-01 11:09:04.967 | INFO  | traceId= | o.h.c.i.RegionFactoryInitiator.initiateService | HHH000026: Second-level cache disabled
+2025-12-01 11:09:05.623 | INFO  | traceId= | o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01 11:09:05.959 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Starting...
+2025-12-01 11:09:06.605 | INFO  | traceId= | c.z.hikari.pool.HikariPool.checkFailFast | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@164dea80
+2025-12-01 11:09:06.609 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Start completed.
+2025-12-01 11:09:06.699 | WARN  | traceId= | o.h.e.j.d.i.DialectFactoryImpl.constructDialect | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-01 11:09:06.756 | INFO  | traceId= | o.h.e.j.e.i.JdbcEnvironmentInitiator.logConnectionInfo | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01 11:09:08.638 | INFO  | traceId= | o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01 11:09:08.748 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 11:09:11.009 | WARN  | traceId= | o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01 11:09:11.550 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting ProtocolHandler ["http-nio-9090"]
+2025-12-01 11:09:11.599 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.start | Tomcat started on port 9090 (http) with context path '/'
+2025-12-01 11:09:11.615 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarted | Started OidcPICApplication in 13.717 seconds (process running for 15.012)
+2025-12-01 11:09:33.449 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-01 11:09:33.450 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Initializing Servlet 'dispatcherServlet'
+2025-12-01 11:09:33.454 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Completed initialization in 3 ms
+2025-12-01 11:09:33.528 | INFO  | traceId=2d77da62-6708-4eed-8b04-73bf66100e7d | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 11:09:33.718 | INFO  | traceId=2d77da62-6708-4eed-8b04-73bf66100e7d | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 11:09:33.720 | WARN  | traceId=2d77da62-6708-4eed-8b04-73bf66100e7d | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 找不到sessionID
+2025-12-01 11:09:33.782 | INFO  | traceId=2d77da62-6708-4eed-8b04-73bf66100e7d | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | redirect OIDC Server會員登入頁面
+2025-12-01 11:09:33.785 | INFO  | traceId=2d77da62-6708-4eed-8b04-73bf66100e7d | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=285ms
+2025-12-01 11:09:35.442 | INFO  | traceId=3d96f7e0-3fff-45fc-8aa3-b3ffa78da017 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=989ms
+2025-12-01 11:09:42.934 | INFO  | traceId=bdba2399-220c-46ab-af57-10256be5e989 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/captcha/verify | Status=200 | 耗時=0ms
+2025-12-01 11:09:43.030 | INFO  | traceId=d975cd9a-51d8-41bc-bf73-8f061d84bf48 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/captcha/verify | Status=200 | 耗時=88ms
+2025-12-01 11:09:43.035 | INFO  | traceId=cd7b15ea-fbdd-4436-966e-10d5f5237060 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/login | Status=200 | 耗時=0ms
+2025-12-01 11:09:43.200 | INFO  | traceId=3263f847-3af1-44f7-bc97-5fb16cdf31e8 | c.e.p.S.RegisterMemberImpl.queryMember | 會員登入成功,userId=33
+2025-12-01 11:09:43.207 | INFO  | traceId=3263f847-3af1-44f7-bc97-5fb16cdf31e8 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/login | Status=200 | 耗時=165ms
+2025-12-01 11:09:44.644 | INFO  | traceId=a0622530-e268-4b07-b9e8-68ce1803f7cc | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 收到使用者授權同意, state=Abiu39nv, userId=33
+2025-12-01 11:09:44.682 | INFO  | traceId=a0622530-e268-4b07-b9e8-68ce1803f7cc | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 成功產生授權碼, code=e0efe429-1905-4a05-941b-d134bbb86f9c, clientId=12345.apps.picusercontent.com, userId=33
+2025-12-01 11:09:44.682 | INFO  | traceId=a0622530-e268-4b07-b9e8-68ce1803f7cc | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/approve | Status=302 | 耗時=40ms
+2025-12-01 11:09:45.003 | INFO  | traceId=00a0ee8d-687a-44ad-9b1b-8921fbe23368 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=84ms
+2025-12-01 11:09:50.834 | INFO  | traceId=0b50c8a2-0f74-4c3e-b150-860d37b2ba5d | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=6ms
+2025-12-01 11:10:11.333 | INFO  | traceId=e1d31ae9-f1ec-42d1-97db-c5c86d70537d | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=23ms
+2025-12-01 11:10:36.749 | INFO  | traceId=769595a6-ee4b-44ab-bf6a-d7ea07d91d44 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=8ms
+2025-12-01 11:10:38.837 | INFO  | traceId=2bb27c49-5d38-464b-a4ba-0978f9f1006f | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/oauth/revokedSessionId | Status=200 | 耗時=0ms
+2025-12-01 11:10:38.859 | INFO  | traceId=5527a29c-b41b-433e-9ee0-260cbbd70c3f | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/revokedSessionId | Status=200 | 耗時=19ms
+2025-12-01 11:10:41.220 | INFO  | traceId=3fbaca77-3fef-4216-a2b5-519202eeda85 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 11:10:41.225 | INFO  | traceId=3fbaca77-3fef-4216-a2b5-519202eeda85 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 11:10:41.226 | WARN  | traceId=3fbaca77-3fef-4216-a2b5-519202eeda85 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 找不到sessionID
+2025-12-01 11:10:41.229 | INFO  | traceId=3fbaca77-3fef-4216-a2b5-519202eeda85 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | redirect OIDC Server會員登入頁面
+2025-12-01 11:10:41.230 | INFO  | traceId=3fbaca77-3fef-4216-a2b5-519202eeda85 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=10ms
+2025-12-01 11:10:41.372 | INFO  | traceId=3e8c6e4f-9f9b-4905-a7e7-21f400faaf77 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=19ms
+2025-12-01 11:10:52.269 | INFO  | traceId=3237cec0-6509-46e7-ae58-dfa8f981d7e5 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/captcha/verify | Status=200 | 耗時=3ms
+2025-12-01 11:10:52.362 | INFO  | traceId=dab82b64-6114-40cc-a5a6-0e1573f708ae | c.e.p.S.RegisterMemberImpl.queryMember | 會員登入成功,userId=33
+2025-12-01 11:10:52.364 | INFO  | traceId=dab82b64-6114-40cc-a5a6-0e1573f708ae | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/login | Status=200 | 耗時=91ms
+2025-12-01 11:10:53.997 | INFO  | traceId=a94efb2e-fc30-4eaa-9f66-c209aaf16616 | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 收到使用者授權同意, state=4RyL94F8, userId=33
+2025-12-01 11:10:54.007 | INFO  | traceId=a94efb2e-fc30-4eaa-9f66-c209aaf16616 | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 成功產生授權碼, code=0467078e-ed03-4aaf-bb17-583e811ea829, clientId=12345.apps.picusercontent.com, userId=33
+2025-12-01 11:10:54.008 | INFO  | traceId=a94efb2e-fc30-4eaa-9f66-c209aaf16616 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/approve | Status=302 | 耗時=12ms
+2025-12-01 11:10:54.125 | INFO  | traceId=ad4086f5-105d-4e74-8ee6-f279473eb229 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=21ms
+2025-12-01 11:12:46.964 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarting | Starting OidcPICApplication using Java 21.0.8 with PID 43124 (C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC\target\classes started by p10427815 in C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC)
+2025-12-01 11:12:46.968 | INFO  | traceId= | o.s.boot.SpringApplication.logStartupProfileInfo | No active profile set, falling back to 1 default profile: "default"
+2025-12-01 11:12:48.389 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01 11:12:48.561 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Finished Spring Data repository scanning in 156 ms. Found 5 JPA repository interfaces.
+2025-12-01 11:12:49.823 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.initialize | Tomcat initialized with port 9090 (http)
+2025-12-01 11:12:49.847 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing ProtocolHandler ["http-nio-9090"]
+2025-12-01 11:12:49.855 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting service [Tomcat]
+2025-12-01 11:12:49.856 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-01 11:12:50.014 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring embedded WebApplicationContext
+2025-12-01 11:12:50.016 | INFO  | traceId= | o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext | Root WebApplicationContext: initialization completed in 2968 ms
+2025-12-01 11:12:50.448 | INFO  | traceId= | o.h.j.internal.util.LogHelper.logPersistenceUnitInformation | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01 11:12:50.535 | INFO  | traceId= | org.hibernate.Version.logVersion | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-01 11:12:50.594 | INFO  | traceId= | o.h.c.i.RegionFactoryInitiator.initiateService | HHH000026: Second-level cache disabled
+2025-12-01 11:12:51.104 | INFO  | traceId= | o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01 11:12:51.151 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Starting...
+2025-12-01 11:12:51.628 | INFO  | traceId= | c.z.hikari.pool.HikariPool.checkFailFast | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d85b399
+2025-12-01 11:12:51.632 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Start completed.
+2025-12-01 11:12:51.717 | WARN  | traceId= | o.h.e.j.d.i.DialectFactoryImpl.constructDialect | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-01 11:12:51.759 | INFO  | traceId= | o.h.e.j.e.i.JdbcEnvironmentInitiator.logConnectionInfo | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01 11:12:53.457 | INFO  | traceId= | o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01 11:12:53.539 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 11:12:54.849 | WARN  | traceId= | o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01 11:12:55.325 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting ProtocolHandler ["http-nio-9090"]
+2025-12-01 11:12:55.333 | WARN  | traceId= | o.s.c.s.AbstractApplicationContext.refresh | Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-12-01 11:12:55.335 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.destroy | Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 11:12:55.338 | INFO  | traceId= | c.z.hikari.HikariDataSource.close | HikariPool-1 - Shutdown initiated...
+2025-12-01 11:12:55.343 | INFO  | traceId= | c.z.hikari.HikariDataSource.close | HikariPool-1 - Shutdown completed.
+2025-12-01 11:12:55.380 | INFO  | traceId= | o.s.b.a.l.ConditionEvaluationReportLogger.logMessage | 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-01 11:12:55.415 | ERROR | traceId= | o.s.b.d.LoggingFailureAnalysisReporter.report | 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9090 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9090 or configure this application to listen on another port.
+
+2025-12-01 11:13:30.528 | INFO  | traceId=7ee088a7-a283-4f11-899d-a82cd2e034b1 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/openid-configuration | Status=200 | 耗時=8ms
+2025-12-01 11:13:30.591 | INFO  | traceId=55fc24b2-d363-4015-8a82-591b3db8763b | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /favicon.ico | Status=200 | 耗時=10ms
+2025-12-01 13:38:14.470 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarting | Starting OidcPICApplication using Java 21.0.8 with PID 20996 (C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC\target\classes started by p10427815 in C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC)
+2025-12-01 13:38:14.478 | INFO  | traceId= | o.s.boot.SpringApplication.logStartupProfileInfo | No active profile set, falling back to 1 default profile: "default"
+2025-12-01 13:38:16.283 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01 13:38:16.496 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Finished Spring Data repository scanning in 190 ms. Found 5 JPA repository interfaces.
+2025-12-01 13:38:17.976 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.initialize | Tomcat initialized with port 9090 (http)
+2025-12-01 13:38:18.000 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing ProtocolHandler ["http-nio-9090"]
+2025-12-01 13:38:18.007 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting service [Tomcat]
+2025-12-01 13:38:18.007 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-01 13:38:18.138 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring embedded WebApplicationContext
+2025-12-01 13:38:18.141 | INFO  | traceId= | o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext | Root WebApplicationContext: initialization completed in 3551 ms
+2025-12-01 13:38:18.437 | INFO  | traceId= | o.h.j.internal.util.LogHelper.logPersistenceUnitInformation | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01 13:38:18.532 | INFO  | traceId= | org.hibernate.Version.logVersion | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-01 13:38:18.577 | INFO  | traceId= | o.h.c.i.RegionFactoryInitiator.initiateService | HHH000026: Second-level cache disabled
+2025-12-01 13:38:18.997 | INFO  | traceId= | o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01 13:38:19.045 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Starting...
+2025-12-01 13:38:19.469 | INFO  | traceId= | c.z.hikari.pool.HikariPool.checkFailFast | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11adab6d
+2025-12-01 13:38:19.472 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Start completed.
+2025-12-01 13:38:19.534 | WARN  | traceId= | o.h.e.j.d.i.DialectFactoryImpl.constructDialect | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-01 13:38:19.570 | INFO  | traceId= | o.h.e.j.e.i.JdbcEnvironmentInitiator.logConnectionInfo | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01 13:38:20.839 | INFO  | traceId= | o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01 13:38:20.946 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 13:38:21.830 | WARN  | traceId= | o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01 13:38:22.266 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting ProtocolHandler ["http-nio-9090"]
+2025-12-01 13:38:22.309 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.start | Tomcat started on port 9090 (http) with context path '/'
+2025-12-01 13:38:22.321 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarted | Started OidcPICApplication in 9.262 seconds (process running for 10.623)
+2025-12-01 13:38:59.141 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-01 13:38:59.143 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Initializing Servlet 'dispatcherServlet'
+2025-12-01 13:38:59.144 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Completed initialization in 1 ms
+2025-12-01 13:38:59.209 | INFO  | traceId=5a1043c5-b1b4-4914-a3ca-c1e5fa30c403 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 13:38:59.477 | INFO  | traceId=5a1043c5-b1b4-4914-a3ca-c1e5fa30c403 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 13:38:59.595 | INFO  | traceId=5a1043c5-b1b4-4914-a3ca-c1e5fa30c403 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:50755db3-eb94-4ff1-ac7d-1565d0942dbb
+2025-12-01 13:38:59.596 | INFO  | traceId=5a1043c5-b1b4-4914-a3ca-c1e5fa30c403 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 13:38:59.598 | INFO  | traceId=5a1043c5-b1b4-4914-a3ca-c1e5fa30c403 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=424ms
+2025-12-01 13:39:00.191 | INFO  | traceId=22ecada4-b6bf-43db-94e1-f4097fd0933a | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=302ms
+2025-12-01 13:39:06.190 | INFO  | traceId=e10b36e5-9e5b-45a1-b6ba-226c43e3bf29 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=6ms
+2025-12-01 14:18:10.789 | INFO  | traceId=b366208d-b0c6-4c71-bbdc-ac3b2e573cfc | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=1403ms
+2025-12-01 14:18:17.574 | INFO  | traceId=5315a74e-b6b2-4233-8386-042cb8a80b03 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/captcha/verify | Status=200 | 耗時=0ms
+2025-12-01 14:18:17.702 | INFO  | traceId=8b87a261-d89e-4482-a1be-85b300cfbca2 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/captcha/verify | Status=200 | 耗時=111ms
+2025-12-01 14:18:17.709 | INFO  | traceId=65caec3c-079b-4311-9f39-232de82089db | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/login | Status=200 | 耗時=1ms
+2025-12-01 14:18:17.989 | INFO  | traceId=aaaf5a62-79bb-4865-ae47-c16e3b9de210 | c.e.p.S.RegisterMemberImpl.queryMember | 會員登入成功,userId=33
+2025-12-01 14:18:17.994 | INFO  | traceId=aaaf5a62-79bb-4865-ae47-c16e3b9de210 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/login | Status=200 | 耗時=279ms
+2025-12-01 14:18:19.620 | INFO  | traceId=ca033c00-2fc5-4c82-a97e-c9c420a47260 | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 收到使用者授權同意, state=MSplmie3, userId=33
+2025-12-01 14:18:19.663 | INFO  | traceId=ca033c00-2fc5-4c82-a97e-c9c420a47260 | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 成功產生授權碼, code=7fdbcd35-b239-4125-bd4e-39d8d85996f3, clientId=12345.apps.picusercontent.com, userId=33
+2025-12-01 14:18:19.663 | INFO  | traceId=ca033c00-2fc5-4c82-a97e-c9c420a47260 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/approve | Status=302 | 耗時=52ms
+2025-12-01 14:18:19.989 | INFO  | traceId=61515688-8c57-4b6f-bd37-d4bf120db441 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=47ms
+2025-12-01 16:46:27.526 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarting | Starting OidcPICApplication using Java 21.0.8 with PID 19080 (C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC\target\classes started by p10427815 in C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC)
+2025-12-01 16:46:27.535 | INFO  | traceId= | o.s.boot.SpringApplication.logStartupProfileInfo | No active profile set, falling back to 1 default profile: "default"
+2025-12-01 16:46:29.718 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01 16:46:30.006 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Finished Spring Data repository scanning in 269 ms. Found 5 JPA repository interfaces.
+2025-12-01 16:46:32.106 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.initialize | Tomcat initialized with port 9090 (http)
+2025-12-01 16:46:32.137 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing ProtocolHandler ["http-nio-9090"]
+2025-12-01 16:46:32.145 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting service [Tomcat]
+2025-12-01 16:46:32.145 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-01 16:46:32.335 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring embedded WebApplicationContext
+2025-12-01 16:46:32.337 | INFO  | traceId= | o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext | Root WebApplicationContext: initialization completed in 4573 ms
+2025-12-01 16:46:33.121 | INFO  | traceId= | o.h.j.internal.util.LogHelper.logPersistenceUnitInformation | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01 16:46:33.300 | INFO  | traceId= | org.hibernate.Version.logVersion | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-01 16:46:33.374 | INFO  | traceId= | o.h.c.i.RegionFactoryInitiator.initiateService | HHH000026: Second-level cache disabled
+2025-12-01 16:46:34.209 | INFO  | traceId= | o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01 16:46:34.405 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Starting...
+2025-12-01 16:46:35.034 | INFO  | traceId= | c.z.hikari.pool.HikariPool.checkFailFast | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@21540255
+2025-12-01 16:46:35.044 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Start completed.
+2025-12-01 16:46:35.276 | WARN  | traceId= | o.h.e.j.d.i.DialectFactoryImpl.constructDialect | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-01 16:46:35.336 | INFO  | traceId= | o.h.e.j.e.i.JdbcEnvironmentInitiator.logConnectionInfo | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01 16:46:37.722 | INFO  | traceId= | o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01 16:46:37.853 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 16:46:40.055 | WARN  | traceId= | o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01 16:46:40.763 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting ProtocolHandler ["http-nio-9090"]
+2025-12-01 16:46:40.811 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.start | Tomcat started on port 9090 (http) with context path '/'
+2025-12-01 16:46:40.824 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarted | Started OidcPICApplication in 14.474 seconds (process running for 15.272)
+2025-12-01 16:49:02.030 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-01 16:49:02.031 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Initializing Servlet 'dispatcherServlet'
+2025-12-01 16:49:02.033 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Completed initialization in 2 ms
+2025-12-01 16:49:02.098 | INFO  | traceId=dfb94d16-a079-4366-bc71-baeccafd106c | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 16:49:02.303 | INFO  | traceId=dfb94d16-a079-4366-bc71-baeccafd106c | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 16:49:02.376 | INFO  | traceId=dfb94d16-a079-4366-bc71-baeccafd106c | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:0290bbb0-0793-4e13-8ba4-5b046960fb77
+2025-12-01 16:49:02.377 | INFO  | traceId=dfb94d16-a079-4366-bc71-baeccafd106c | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 16:49:02.377 | INFO  | traceId=dfb94d16-a079-4366-bc71-baeccafd106c | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=308ms
+2025-12-01 16:49:02.820 | INFO  | traceId=af966974-1e37-4d25-8d2b-4a475fd7ce79 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=216ms
+2025-12-01 16:49:02.848 | INFO  | traceId=d29d81e5-2766-4f84-85d9-674e7d9ed4cc | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=7ms
+2025-12-01 16:49:06.192 | INFO  | traceId=57cbbcc3-8b0e-4f9e-8ba8-6e9b673f38bc | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 16:49:06.196 | INFO  | traceId=57cbbcc3-8b0e-4f9e-8ba8-6e9b673f38bc | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 16:49:06.205 | INFO  | traceId=57cbbcc3-8b0e-4f9e-8ba8-6e9b673f38bc | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:11ddf614-f0bc-4edb-92bb-50599cd17f5f
+2025-12-01 16:49:06.206 | INFO  | traceId=57cbbcc3-8b0e-4f9e-8ba8-6e9b673f38bc | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 16:49:06.206 | INFO  | traceId=57cbbcc3-8b0e-4f9e-8ba8-6e9b673f38bc | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=16ms
+2025-12-01 16:49:06.334 | INFO  | traceId=a1987578-0bad-4847-aba1-56d209f654a9 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=24ms
+2025-12-01 16:49:06.342 | INFO  | traceId=711eb4da-9f3a-4c37-9eae-1ba98c7fe137 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=1ms
+2025-12-01 16:50:20.127 | INFO  | traceId=e799eea8-17af-483c-b1d3-2186ce9ed720 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 16:50:20.133 | INFO  | traceId=e799eea8-17af-483c-b1d3-2186ce9ed720 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 16:50:20.158 | INFO  | traceId=e799eea8-17af-483c-b1d3-2186ce9ed720 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:526b8c4e-1d26-4d7f-b971-8669c52e6568
+2025-12-01 16:50:20.158 | INFO  | traceId=e799eea8-17af-483c-b1d3-2186ce9ed720 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 16:50:20.160 | INFO  | traceId=e799eea8-17af-483c-b1d3-2186ce9ed720 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=33ms
+2025-12-01 16:50:20.426 | INFO  | traceId=d3a7ae4d-23de-4c80-85e8-893497d79176 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=35ms
+2025-12-01 16:50:20.446 | INFO  | traceId=f5ef5826-c020-45f9-88f7-ac48234f2126 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=1ms
+2025-12-01 16:50:58.863 | INFO  | traceId=5849f0a8-b9cd-46f5-bdcd-b4910ae03bb5 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 16:50:58.868 | INFO  | traceId=5849f0a8-b9cd-46f5-bdcd-b4910ae03bb5 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 16:50:58.877 | INFO  | traceId=5849f0a8-b9cd-46f5-bdcd-b4910ae03bb5 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:1a53dcd2-7865-4c5f-8e17-6495d96cea66
+2025-12-01 16:50:58.877 | INFO  | traceId=5849f0a8-b9cd-46f5-bdcd-b4910ae03bb5 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 16:50:58.879 | INFO  | traceId=5849f0a8-b9cd-46f5-bdcd-b4910ae03bb5 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=16ms
+2025-12-01 16:50:59.020 | INFO  | traceId=70d64132-3edf-465b-8288-fbd47389aea0 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=23ms
+2025-12-01 16:51:04.544 | INFO  | traceId=485e8696-1a2a-42b2-9f6b-52305b5230a6 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=2ms
+2025-12-01 16:51:40.526 | INFO  | traceId=74eab85a-e100-4148-bd48-5008f4789774 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=2ms
+2025-12-01 17:00:23.076 | INFO  | traceId=77e214c8-aa5b-4aba-9618-236395ab5083 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=2ms
+2025-12-01 17:05:53.565 | INFO  | traceId=f687bb9f-9baa-4756-ab0e-dfd178fa815a | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=1ms
+2025-12-01 17:05:54.518 | INFO  | traceId=de250076-e2da-4d2f-9bf0-64ce802f517e | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=34ms
+2025-12-01 17:06:19.062 | INFO  | traceId=bd636e07-1728-4dbb-906a-3d2249a69618 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 17:06:19.068 | INFO  | traceId=bd636e07-1728-4dbb-906a-3d2249a69618 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 17:06:19.080 | INFO  | traceId=bd636e07-1728-4dbb-906a-3d2249a69618 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:edba12f3-30aa-4204-90a3-8112f405d183
+2025-12-01 17:06:19.082 | INFO  | traceId=bd636e07-1728-4dbb-906a-3d2249a69618 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 17:06:19.082 | INFO  | traceId=bd636e07-1728-4dbb-906a-3d2249a69618 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=21ms
+2025-12-01 17:06:19.303 | INFO  | traceId=2f012b89-0e46-4a13-9c53-1800f23228e6 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=27ms
+2025-12-01 17:06:19.320 | INFO  | traceId=b601decb-6d13-4250-b0e9-ccb98ee33022 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=3ms
+2025-12-01 17:06:19.450 | INFO  | traceId=0d1aeb32-aa72-4e7b-b3bd-635e561b28b2 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=6ms
+2025-12-01 17:06:22.029 | INFO  | traceId=19f082bc-9950-43b1-beeb-59b65fd26ebb | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/oauth/revokedSessionId | Status=200 | 耗時=0ms
+2025-12-01 17:06:22.145 | INFO  | traceId=aeb8328a-a65c-4ec6-b64e-ce301e210d61 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/revokedSessionId | Status=200 | 耗時=101ms
+2025-12-01 17:06:24.514 | INFO  | traceId=32eda771-6a64-4c47-9e0f-b279cde0a31b | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 17:06:24.520 | INFO  | traceId=32eda771-6a64-4c47-9e0f-b279cde0a31b | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 17:06:24.520 | WARN  | traceId=32eda771-6a64-4c47-9e0f-b279cde0a31b | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 找不到sessionID
+2025-12-01 17:06:24.532 | INFO  | traceId=32eda771-6a64-4c47-9e0f-b279cde0a31b | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | redirect OIDC Server會員登入頁面
+2025-12-01 17:06:24.532 | INFO  | traceId=32eda771-6a64-4c47-9e0f-b279cde0a31b | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=20ms
+2025-12-01 17:06:25.122 | INFO  | traceId=137f16a9-057e-4f34-9f34-beea6e18d98b | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=356ms
+2025-12-01 17:06:29.953 | INFO  | traceId=0b8dfe4a-67cc-4649-9366-373beb28f6f0 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=637ms
+2025-12-01 17:06:30.244 | INFO  | traceId=c83de6e9-5337-4dce-a851-877d5dddfd44 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/captcha/generate | Status=200 | 耗時=28ms
+2025-12-01 17:06:34.227 | INFO  | traceId=d75792e4-7078-4911-b453-ce99caaaac68 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/captcha/verify | Status=200 | 耗時=0ms
+2025-12-01 17:06:34.235 | INFO  | traceId=c89a5966-348c-45e3-b264-6279ef8a622b | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/captcha/verify | Status=200 | 耗時=2ms
+2025-12-01 17:06:34.239 | INFO  | traceId=64dabaf8-db0e-4117-b8be-fcf9be1f11e4 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: OPTIONS /api/login | Status=200 | 耗時=0ms
+2025-12-01 17:06:34.366 | INFO  | traceId=01a5ff58-16c4-48d1-abbb-fccb835d5b02 | c.e.p.S.RegisterMemberImpl.queryMember | 會員登入成功,userId=33
+2025-12-01 17:06:34.369 | INFO  | traceId=01a5ff58-16c4-48d1-abbb-fccb835d5b02 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/login | Status=200 | 耗時=128ms
+2025-12-01 17:06:35.894 | INFO  | traceId=241e5bb6-4fe2-4766-99c7-d9a037c7379d | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 收到使用者授權同意, state=EZsQylwh, userId=33
+2025-12-01 17:06:35.906 | INFO  | traceId=241e5bb6-4fe2-4766-99c7-d9a037c7379d | c.e.pic.ServiceImpl.OauthImpl.approveAuthorization | 成功產生授權碼, code=ec5fb12d-53cb-434f-b9a1-8ff062b9735e, clientId=12345.apps.picusercontent.com, userId=33
+2025-12-01 17:06:35.908 | INFO  | traceId=241e5bb6-4fe2-4766-99c7-d9a037c7379d | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/approve | Status=302 | 耗時=15ms
+2025-12-01 17:06:36.036 | INFO  | traceId=857d7873-4644-4e4a-880c-648891e6f2dc | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=22ms
+2025-12-01 17:06:36.044 | INFO  | traceId=496298c8-9321-4f8c-8467-b086a2f6968c | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=2ms
+2025-12-01 17:06:36.075 | INFO  | traceId=047b6bb6-781c-42e0-a763-8c55c208f47e | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=6ms
+2025-12-01 17:09:08.913 | INFO  | traceId=d3634f77-2924-426e-9bf1-895c7ef4ae41 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 17:09:08.918 | INFO  | traceId=d3634f77-2924-426e-9bf1-895c7ef4ae41 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 17:09:08.929 | INFO  | traceId=d3634f77-2924-426e-9bf1-895c7ef4ae41 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:e8c5f5a8-e35b-43e7-b427-77a5279685f5
+2025-12-01 17:09:08.929 | INFO  | traceId=d3634f77-2924-426e-9bf1-895c7ef4ae41 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 17:09:08.929 | INFO  | traceId=d3634f77-2924-426e-9bf1-895c7ef4ae41 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=17ms
+2025-12-01 17:09:09.179 | INFO  | traceId=494e3b3f-a21f-4142-9610-8de1dad34c12 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=23ms
+2025-12-01 17:19:49.012 | INFO  | traceId=a1e79309-4ab8-4f03-ab30-9967076a3548 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 17:19:49.022 | INFO  | traceId=a1e79309-4ab8-4f03-ab30-9967076a3548 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 17:19:49.035 | INFO  | traceId=a1e79309-4ab8-4f03-ab30-9967076a3548 | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:24bf343b-c180-45be-a38e-da9243bf425f
+2025-12-01 17:19:49.037 | INFO  | traceId=a1e79309-4ab8-4f03-ab30-9967076a3548 | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 17:19:49.037 | INFO  | traceId=a1e79309-4ab8-4f03-ab30-9967076a3548 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=27ms
+2025-12-01 17:19:49.303 | INFO  | traceId=71aa1815-d03e-4318-81a8-7b97abfe1080 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=39ms
+2025-12-01 17:19:59.748 | INFO  | traceId=6a41b4b5-6010-44f5-b72b-ca432b1b215d | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=1ms
+2025-12-01 17:19:59.860 | INFO  | traceId=0a093789-e53b-47f8-9b29-a392acc3eb53 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=9ms
+2025-12-01 17:20:04.352 | INFO  | traceId=e7b8ba89-cf13-4843-819d-f245368d1aee | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=5ms
+2025-12-01 17:20:30.617 | INFO  | traceId=157fe8eb-303c-498f-9674-efd6d91e85eb | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=6ms
+2025-12-01 17:23:26.187 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarting | Starting OidcPICApplication using Java 21.0.8 with PID 49072 (C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC\target\classes started by p10427815 in C:\Users\p10427815\git\OIDC_Demo\OIDC_PIC)
+2025-12-01 17:23:26.192 | INFO  | traceId= | o.s.boot.SpringApplication.logStartupProfileInfo | No active profile set, falling back to 1 default profile: "default"
+2025-12-01 17:23:27.691 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-01 17:23:27.931 | INFO  | traceId= | o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn | Finished Spring Data repository scanning in 218 ms. Found 5 JPA repository interfaces.
+2025-12-01 17:23:29.204 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.initialize | Tomcat initialized with port 9090 (http)
+2025-12-01 17:23:29.290 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing ProtocolHandler ["http-nio-9090"]
+2025-12-01 17:23:29.296 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting service [Tomcat]
+2025-12-01 17:23:29.297 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-01 17:23:29.513 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring embedded WebApplicationContext
+2025-12-01 17:23:29.523 | INFO  | traceId= | o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext | Root WebApplicationContext: initialization completed in 3245 ms
+2025-12-01 17:23:29.905 | INFO  | traceId= | o.h.j.internal.util.LogHelper.logPersistenceUnitInformation | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-01 17:23:30.007 | INFO  | traceId= | org.hibernate.Version.logVersion | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-01 17:23:30.072 | INFO  | traceId= | o.h.c.i.RegionFactoryInitiator.initiateService | HHH000026: Second-level cache disabled
+2025-12-01 17:23:30.724 | INFO  | traceId= | o.s.o.j.p.SpringPersistenceUnitInfo.addTransformer | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-01 17:23:30.782 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Starting...
+2025-12-01 17:23:31.355 | INFO  | traceId= | c.z.hikari.pool.HikariPool.checkFailFast | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5597ca3
+2025-12-01 17:23:31.359 | INFO  | traceId= | c.z.hikari.HikariDataSource.getConnection | HikariPool-1 - Start completed.
+2025-12-01 17:23:31.422 | WARN  | traceId= | o.h.e.j.d.i.DialectFactoryImpl.constructDialect | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-01 17:23:31.462 | INFO  | traceId= | o.h.e.j.e.i.JdbcEnvironmentInitiator.logConnectionInfo | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-01 17:23:33.376 | INFO  | traceId= | o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-01 17:23:33.490 | INFO  | traceId= | o.s.o.j.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-01 17:23:35.150 | WARN  | traceId= | o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-01 17:23:35.954 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Starting ProtocolHandler ["http-nio-9090"]
+2025-12-01 17:23:36.015 | INFO  | traceId= | o.s.b.w.e.t.TomcatWebServer.start | Tomcat started on port 9090 (http) with context path '/'
+2025-12-01 17:23:36.037 | INFO  | traceId= | o.s.boot.StartupInfoLogger.logStarted | Started OidcPICApplication in 10.866 seconds (process running for 11.982)
+2025-12-01 17:23:50.799 | INFO  | traceId= | o.a.juli.logging.DirectJDKLog.log | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-01 17:23:50.800 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Initializing Servlet 'dispatcherServlet'
+2025-12-01 17:23:50.803 | INFO  | traceId= | o.s.w.servlet.FrameworkServlet.initServletBean | Completed initialization in 2 ms
+2025-12-01 17:23:50.866 | INFO  | traceId=f0e4ea45-25f5-4e45-90db-f8e942ce1f2c | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 開始接收授權 url
+2025-12-01 17:23:51.091 | INFO  | traceId=f0e4ea45-25f5-4e45-90db-f8e942ce1f2c | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 開始驗證是否免登入
+2025-12-01 17:23:51.175 | INFO  | traceId=f0e4ea45-25f5-4e45-90db-f8e942ce1f2c | c.e.pic.ServiceImpl.OauthImpl.tryAutoLogin | 建立授權code:38d375c7-cab7-41df-8f60-ed067bd554cb
+2025-12-01 17:23:51.179 | INFO  | traceId=f0e4ea45-25f5-4e45-90db-f8e942ce1f2c | c.e.pic.ServiceImpl.OauthImpl.getAuthUrl | 使用者免登入,已由 tryAutoLogin 處理流程
+2025-12-01 17:23:51.180 | INFO  | traceId=f0e4ea45-25f5-4e45-90db-f8e942ce1f2c | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/authorize | Status=302 | 耗時=353ms
+2025-12-01 17:23:51.643 | INFO  | traceId=a92ba6fd-c22f-400a-a389-fc1e971019a9 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=250ms
+2025-12-01 17:24:02.088 | INFO  | traceId=d73846e9-ade5-42bd-bd41-9bba4cdd9436 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /.well-known/jwks.json | Status=200 | 耗時=8ms
+2025-12-01 17:24:02.225 | INFO  | traceId=79b72ce2-4789-4b97-98fe-ad288c81c6e6 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=15ms
+2025-12-01 17:24:04.518 | INFO  | traceId=768dbc15-82cf-400b-b55f-a4a484f4f23e | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=6ms
+2025-12-01 17:24:09.646 | INFO  | traceId=9ca7015e-825c-4370-a0a7-3b75394ea95a | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=7ms
+2025-12-01 17:24:18.358 | INFO  | traceId=c749242e-65dd-46a3-8e67-a7734e0cf501 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=7ms
+2025-12-01 17:26:55.803 | INFO  | traceId=b083bfea-21fa-4966-9658-cb5f70b6cf68 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: POST /api/oauth/token | Status=200 | 耗時=20ms
+2025-12-01 17:27:33.028 | INFO  | traceId=ad9041af-e9f8-496c-b3d3-f6dc89f2eeb9 | c.e.p.c.RequestLogInterceptor.afterCompletion | API: GET /api/oauth/userInfo | Status=200 | 耗時=7ms

@@ -41,8 +41,7 @@ public class OauthAccessTokenTb {
             columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Timestamp createdAt;
 
-    @Column(name = "revoked", nullable = false)
-    private Boolean revoked = false;
+
 
 	public Long getId() {
 		return id;
@@ -100,13 +99,6 @@ public class OauthAccessTokenTb {
 		this.createdAt = createdAt;
 	}
 
-	public Boolean getRevoked() {
-		return revoked;
-	}
-
-	public void setRevoked(Boolean revoked) {
-		this.revoked = revoked;
-	}
 
 	public Timestamp getAccessToken_expiresAt() {
 		return accessToken_expiresAt;

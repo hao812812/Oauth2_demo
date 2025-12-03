@@ -24,83 +24,88 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200","http://localhost:4300"}, allowCredentials = "true")
+@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:4300" }, allowCredentials = "true")
 @RequestMapping("/api")
 public class OidcController {
 
-	
 	@Autowired
-	private  RegisterMemberService registerService;
+	private RegisterMemberService registerService;
 	@Autowired
 	private OauthService oauthService;
 
 	/**
 	 * 使用者 註冊
+	 * 
 	 * @param request
 	 * @return
 	 */
 	@PostMapping("/register")
-	public commonRes<Void> register(@RequestBody RegisterTranrsData request){
+	public commonRes<Void> register(@RequestBody RegisterTranrsData request) {
 		return registerService.insertMember(request);
 	}
-	
+
 	/**
 	 * 使用者 登入
+	 * 
 	 * @return
 	 */
 	@PostMapping("/login")
-	public commonRes<memberInfo> login(@RequestBody RegisterTranrsData request,HttpServletResponse response){
-		return registerService.queryMember(request,response);
+	public commonRes<memberInfo> login(@RequestBody RegisterTranrsData request, HttpServletResponse response) {
+		return registerService.queryMember(request, response);
 	}
-	
+
 	/*
 	 * 獲取授權URL
 	 */
 	@GetMapping("/oauth/authorize")
-	public commonRes<Void> getAuthCode(@RequestParam Map<String, String> params,HttpServletRequest httpRequest,HttpServletResponse response) throws IOException {
-		return oauthService.getAuthUrl(params,httpRequest,response);
+	public void getAuthCode(@RequestParam Map<String, String> params, HttpServletRequest httpRequest,
+			HttpServletResponse response) throws IOException {
+		oauthService.getAuthUrl(params, httpRequest, response);
+		 
 	}
-	
 
 	/*
-	 * 使用者 授權同意後
-	 * return  code url 給 client
+	 * 使用者 授權同意後 return code url 給 client
 	 */
 	@GetMapping("/oauth/approve")
-	public commonRes<Void> approve(@RequestParam Map<String, String> params,HttpServletResponse response) throws IOException {
-		 
-		 return oauthService.approveAuthorization(params,response);
+	public void approve(@RequestParam Map<String, String> params, HttpServletResponse response)
+			throws IOException {
+
+	 oauthService.approveAuthorization(params, response);
 	}
-	
+
 	/**
 	 * 接收client平台傳送的code ，並回傳access_token
+	 * 
 	 * @param params
 	 * @return
 	 */
 	@PostMapping("/oauth/token")
-	public commonRes<Map<String, Object>>accessCode(@ModelAttribute OauthCode params) {
-		 return oauthService.accessCode(params);
+	public commonRes<Map<String, Object>> accessCode(@ModelAttribute OauthCode params) {
+		return oauthService.accessCode(params);
 	}
-	
+
 	/**
 	 * 拿 access_token 請求 user information
+	 * 
 	 * @param authHeader
 	 * @return
 	 */
 	@GetMapping("/oauth/userInfo")
-	public ResponseEntity<Map<String, Object>>getUserInfo(@RequestHeader("Authorization") String authHeader) {
-		 return oauthService.getUserInfo(authHeader);
+	public ResponseEntity<Map<String, Object>> getUserInfo(@RequestHeader("Authorization") String authHeader) {
+		return oauthService.getUserInfo(authHeader);
 	}
-	
-	
+
 	/**
 	 * revoked 免登入
+	 * 
 	 * @param params
 	 * @return
 	 */
 	@PostMapping("/oauth/revokedSessionId")
-	public commonRes<Map<String, Object>> revokedSession(@RequestBody Map<String, String> req,HttpServletRequest httpRequest,HttpServletResponse response){
-		return oauthService.revokedSession(req,httpRequest,response);
+	public commonRes<Map<String, Object>> revokedSession(@RequestBody Map<String, String> req,
+			HttpServletRequest httpRequest, HttpServletResponse response) {
+		return oauthService.revokedSession(req, httpRequest, response);
 	}
-	
+
 }
