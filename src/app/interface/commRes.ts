@@ -13,3 +13,8 @@ export interface userInfo{
   mail:string;
   name:string;
 }
+
+export interface CommonResNoData {
+  success: boolean;
+  message: string;
+}

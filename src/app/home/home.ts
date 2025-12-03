@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonRes, userInfo } from '../interface/commRes';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {}
 
   login: boolean = false;
   mail?: string;
@@ -30,8 +32,21 @@ export class Home implements OnInit {
   goToLogin() {
     this.router.navigate(['/login']);
   }
+  logout() {}
+  removeBinding() {
+    const url = 'http://localhost:9090/api/oauth/revokedSessionId';
+    const body = {};
+    this.http.post<CommonRes<userInfo>>(url, body, { withCredentials: true }).subscribe((res) => {
 
-  logout(){
+      if (!res.success) {
+        return;
+      }
+      alert('已解除綁定，請重新登入');
+      this.login = false;
+    });
+  }
 
+  goToHome(){
+     this.router.navigate(['/login-home']);
   }
 }

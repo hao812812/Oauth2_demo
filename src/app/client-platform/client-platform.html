@@ -1,10 +1,45 @@
 <div class="login-container">
   <div class="card shadow">
     <div class="card-body p-5">
-      <h2 class="text-center mb-4 fw-normal sy" >登入 login</h2>
+      <h2 class="text-center mb-4 fw-normal sy">登入 login</h2>
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label small text-muted">帳號</label>
+          <div class="position-relative">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="輸入帳號"
+              formControlName="userAccount"
+            />
+          </div>
+        </div>
 
-      <span class="explainText d-block text-center">----以第三方平台登入----</span>
-      <button type="submit" class="btn btn-primary w-100 mb-3" (click)="Onbutton()">PIC 平台</button>
+        <div class="mb-4">
+          <label for="password" class="form-label small text-muted">密碼</label>
+          <div class="position-relative">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="輸入密碼"
+              formControlName="userPassword"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mb-3" style="margin-top: 20px">
+          登入
+        </button>
+      </form>
+
+      <span class="explainText d-block text-center" style="margin-top: 20px"
+        >------以第三方平台登入------</span
+      >
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mb-3" id="Bplatform" (click)="Onbutton()">B 平台</button>
+      </div>
     </div>
   </div>
 </div>

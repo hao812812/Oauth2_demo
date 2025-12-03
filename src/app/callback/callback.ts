@@ -11,32 +11,41 @@ import { CommonRes, userInfo } from '../interface/commRes';
   styleUrl: './callback.css',
 })
 export class Callback implements OnInit {
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    //發送code 請求給 授權平台B 後端
-    const code = this.route.snapshot.queryParamMap.get('code');
-    const state = this.route.snapshot.queryParamMap.get('state');
-    const url = 'http://localhost:8080/api/oauth/sendCode';
-    const body = {
-      code: code,
-      state: state,
-    };
-    this.http.post<CommonRes<userInfo>>(url, body,{withCredentials: true }).subscribe((res) => {
-      if (!res.success) {
+    this.route.queryParams.subscribe((params) => {
+      if (params['error']) {
+        alert('登入第三方失敗，請重新登入');
+        this.router.navigate(['/home']);
+
         return;
       }
-      const userId = res.data.id;
-      const userMail = res.data.mail;
-      const userName = res.data.name;
-      this.router.navigate(['/home'], {
-        queryParams: {
-          userId: userId,
-          userMail: userMail,
-          userName: userName,
-          checkLogin:true
-
-        },
+      //發送code 請求給 授權平台B 後端
+      const code = this.route.snapshot.queryParamMap.get('code');
+      const state = this.route.snapshot.queryParamMap.get('state');
+      const url = 'http://localhost:8080/client/oauth/sendCode';
+      const body = {
+        code: code,
+        state: state,
+      };
+      this.http.post<CommonRes<userInfo>>(url, body, { withCredentials: true }).subscribe((res) => {
+        if (!res.success) {
+          alert('登入第三方失敗，請重新登入');
+          this.router.navigate(['/home']);
+          return;
+        }
+        const userId = res.data.id;
+        const userMail = res.data.mail;
+        const userName = res.data.name;
+        this.router.navigate(['/home'], {
+          queryParams: {
+            userId: userId,
+            userMail: userMail,
+            userName: userName,
+            checkLogin: true,
+          },
+        });
       });
     });
   }

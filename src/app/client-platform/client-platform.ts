@@ -23,8 +23,12 @@ export class ClientPlatform implements OnInit{
   Onbutton() {
     let body = {};
     //取得 authorizationUrl
-    let url = 'http://localhost:8080/api/oauth/authorization-url';
+    let url = 'http://localhost:8080/client/oauth/authorization-url';
     this.http.post<CommonRes<AuthorizationData>>(url, body).subscribe((res) => {
+      if(res.success==false){
+        alert("取得授權網址失敗，請稍後再試");
+        return;
+      }
       //傳送 authorizationUrl 至 B平台 後端
       const authorizationUrl = res.data.authorizationUrl;
        window.location.href = authorizationUrl;
