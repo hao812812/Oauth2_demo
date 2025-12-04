@@ -19,8 +19,6 @@ public class OauthAuthorizationCodeTb {
 	@Column(name = "user_id")
 	private Long userId;
 
-	@Column(name = "redirect_uri")
-	private String redirectUri;
 	@Column(name = "scope")
 	private String scope;
 	@Column(name = "code_challenge")
@@ -57,14 +55,6 @@ public class OauthAuthorizationCodeTb {
 
 	public void setUserId(Long userId) {
 		this.userId = userId;
-	}
-
-	public String getRedirectUri() {
-		return redirectUri;
-	}
-
-	public void setRedirectUri(String redirectUri) {
-		this.redirectUri = redirectUri;
 	}
 
 	public String getScope() {

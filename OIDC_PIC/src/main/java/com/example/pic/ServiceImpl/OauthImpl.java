@@ -31,12 +31,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.example.pic.Entity.OauthAuthorizationCodeTb;
-import com.example.pic.Entity.OauthAuthorizeRequestTb;
 import com.example.pic.Entity.OauthRegisterTb;
 import com.example.pic.Entity.OauthUserSession;
 import com.example.pic.Entity.OauthAccessTokenTb;
 import com.example.pic.Repository.AuthorizationCodeRepository;
-import com.example.pic.Repository.OauthAuthorizeReqRepository;
 import com.example.pic.Repository.OauthRegisterRepository;
 import com.example.pic.Repository.OauthUserSessionRepository;
 import com.example.pic.Repository.OauthAccessTokenRepository;
@@ -66,12 +64,6 @@ public class OauthImpl implements OauthService {
 	 */
 	@Autowired
 	private AuthorizationCodeRepository authorizationCodeRepository;
-
-	/**
-	 * oauth_authorize_request DB
-	 */
-	@Autowired
-	private OauthAuthorizeReqRepository oauthAuthorizeReqRepository;
 
 	/**
 	 * oauth_token DB
@@ -158,24 +150,6 @@ public class OauthImpl implements OauthService {
 			return;
 		}
 
-		try {
-			// 暫存url 資料 至DB 以利後續產code使用
-			OauthAuthorizeRequestTb entity = new OauthAuthorizeRequestTb();
-			entity.setClientId(clientId);
-			entity.setRedirectUri(redirectUri);
-			entity.setState(state);
-			entity.setScope(scope);
-			entity.setCodeChallenge(codeChallenge);
-			entity.setCodeChallengeMethod(codeChallengeMethod);
-			oauthAuthorizeReqRepository.save(entity);
-
-		} catch (Exception e) {
-			log.error("寫入 OauthAuthorizeRequestTb 發生錯誤", e);
-			redirectError(response, redirectUri, "db_error");
-			return;
-
-		}
-
 		// 導向b平台 登入頁 (Angular)
 		try {
 			String angularLogin = String.format(
@@ -206,20 +180,12 @@ public class OauthImpl implements OauthService {
 		String state = request.get("state");
 		String userId = request.get("user_id");
 		String redirectUri = request.get("redirect_uri");
-
+		String client_id = request.get("client_id");
+		String scope = request.get("scope");
+		String code_challenge = request.get("code_challenge");
+		String code_challenge_method = request.get("code_challenge_method");
 		log.info("收到使用者授權同意, state={}, userId={}", state, userId);
 
-		// DB 查找 暫存的 request url 資料
-		Optional<OauthAuthorizeRequestTb> data = oauthAuthorizeReqRepository.findByState(state);
-
-		// db 是否有資料
-		if (data.isEmpty()) {
-			log.error("找不到暫存的授權請求資料,state:{}", state);
-			redirectError(response, redirectUri, "invalid_request");
-			return;
-		}
-
-		OauthAuthorizeRequestTb urlData = data.get();
 
 		// 建立授權碼
 		String code = UUID.randomUUID().toString();
@@ -231,15 +197,14 @@ public class OauthImpl implements OauthService {
 			// 寫入資料表
 			OauthAuthorizationCodeTb entity = new OauthAuthorizationCodeTb();
 			entity.setCode(code);
-			entity.setClientId(urlData.getClientId());
+			entity.setClientId(client_id);
 			entity.setUserId(Long.parseLong(userId));
-			entity.setRedirectUri(urlData.getRedirectUri());
-			entity.setScope(urlData.getScope());
-			entity.setCodeChallenge(urlData.getCodeChallenge());
-			entity.setCodeChallengeMethod(urlData.getCodeChallengeMethod());
+			entity.setScope(scope);
+			entity.setCodeChallenge(code_challenge);
+			entity.setCodeChallengeMethod(code_challenge_method);
 			entity.setExpiresAt(expiresAt);
 			authorizationCodeRepository.save(entity);
-			log.info("成功產生授權碼, code={}, clientId={}, userId={}", code, urlData.getClientId(), userId);
+			log.info("成功產生授權碼, code={}, clientId={}, userId={}", code, client_id, userId);
 
 		} catch (Exception e) {
 			log.error("寫入授權碼進DB錯誤,state={}", request.get("state"), e);
@@ -247,7 +212,7 @@ public class OauthImpl implements OauthService {
 		}
 
 		// redirect 回 A 平台
-		String redirectUrl = String.format("%s?code=%s&state=%s", urlData.getRedirectUri(), code, state);
+		String redirectUrl = String.format("%s?code=%s&state=%s", redirectUri, code, state);
 		response.sendRedirect(redirectUrl);
 		return;
 	}
@@ -364,7 +329,6 @@ public class OauthImpl implements OauthService {
 			codeEntity.setCode(code);
 			codeEntity.setClientId(request.get("client_id"));
 			codeEntity.setUserId(session.getUserId());
-			codeEntity.setRedirectUri(request.get("redirect_uri"));
 			codeEntity.setScope(request.get("scope"));
 			codeEntity.setCodeChallenge(request.get("code_challenge"));
 			codeEntity.setCodeChallengeMethod(request.get("code_challenge_method"));
