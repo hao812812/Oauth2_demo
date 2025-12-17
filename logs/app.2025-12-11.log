@@ -1,0 +1,47 @@
+2025-12-11 15:51:01.191 | INFO  | traceId= | logStarting:53 | Starting OidcClientApplication using Java 21.0.8 with PID 52988 (C:\Users\p10427815\Desktop\OIDC_Client_Final\target\classes started by p10427815 in C:\Users\p10427815\Desktop\OIDC_Client_Final)
+2025-12-11 15:51:01.221 | INFO  | traceId= | logStartupProfileInfo:652 | No active profile set, falling back to 1 default profile: "default"
+2025-12-11 15:51:03.767 | INFO  | traceId= | registerRepositoriesIn:145 | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-11 15:51:03.893 | INFO  | traceId= | registerRepositoriesIn:213 | Finished Spring Data repository scanning in 106 ms. Found 2 JPA repository interfaces.
+2025-12-11 15:51:05.321 | INFO  | traceId= | initialize:111 | Tomcat initialized with port 8080 (http)
+2025-12-11 15:51:05.359 | INFO  | traceId= | log:168 | Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-11 15:51:05.364 | INFO  | traceId= | log:168 | Starting service [Tomcat]
+2025-12-11 15:51:05.365 | INFO  | traceId= | log:168 | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-11 15:51:05.614 | INFO  | traceId= | log:168 | Initializing Spring embedded WebApplicationContext
+2025-12-11 15:51:05.619 | INFO  | traceId= | prepareWebApplicationContext:301 | Root WebApplicationContext: initialization completed in 4167 ms
+2025-12-11 15:51:06.641 | INFO  | traceId= | logPersistenceUnitInformation:31 | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-11 15:51:06.804 | INFO  | traceId= | logVersion:44 | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-11 15:51:06.871 | INFO  | traceId= | initiateService:50 | HHH000026: Second-level cache disabled
+2025-12-11 15:51:07.384 | INFO  | traceId= | addTransformer:87 | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-11 15:51:07.448 | INFO  | traceId= | getConnection:109 | HikariPool-1 - Starting...
+2025-12-11 15:51:07.973 | INFO  | traceId= | checkFailFast:580 | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@68a426c3
+2025-12-11 15:51:07.976 | INFO  | traceId= | getConnection:122 | HikariPool-1 - Start completed.
+2025-12-11 15:51:08.094 | WARN  | traceId= | constructDialect:153 | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-11 15:51:08.199 | INFO  | traceId= | logConnectionInfo:163 | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-11 15:51:10.632 | INFO  | traceId= | initiateService:59 | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-11 15:51:10.821 | INFO  | traceId= | buildNativeEntityManagerFactory:447 | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-11 15:51:11.685 | WARN  | traceId= | openEntityManagerInViewInterceptor:258 | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-11 15:51:12.868 | INFO  | traceId= | log:168 | Starting ProtocolHandler ["http-nio-8080"]
+2025-12-11 15:51:13.000 | INFO  | traceId= | start:243 | Tomcat started on port 8080 (http) with context path '/'
+2025-12-11 15:51:13.014 | INFO  | traceId= | logStarted:59 | Started OidcClientApplication in 13.26 seconds (process running for 14.151)
+2025-12-11 15:52:44.690 | INFO  | traceId= | log:168 | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-11 15:52:44.691 | INFO  | traceId= | initServletBean:532 | Initializing Servlet 'dispatcherServlet'
+2025-12-11 15:52:44.695 | INFO  | traceId= | initServletBean:554 | Completed initialization in 3 ms
+2025-12-11 15:52:44.865 | INFO  | traceId=60977e96-74ad-4868-8dfd-f597ccdd1100 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 15:52:45.062 | INFO  | traceId=60977e96-74ad-4868-8dfd-f597ccdd1100 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=Wssw4GnD&code_challenge_method=S256&code_challenge=rSCOsgB89lQxqe3LjjHWg05GfdQr5SEKwPEFki2FXEs
+2025-12-11 15:54:42.816 | INFO  | traceId=ebe720df-bc4d-4c0a-af3a-8d380f345380 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 15:54:42.835 | INFO  | traceId=ebe720df-bc4d-4c0a-af3a-8d380f345380 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=gdkLY69x&code_challenge_method=S256&code_challenge=j0GidLSbN5PxpTvBKQLl8raNf8Q1mMgBaauooeMqJ8Y
+2025-12-11 15:56:23.459 | INFO  | traceId=dd10d341-fd7c-47f2-b7ed-d24971952b7a | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 15:56:23.478 | INFO  | traceId=dd10d341-fd7c-47f2-b7ed-d24971952b7a | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=EYvuZq3m&code_challenge_method=S256&code_challenge=oNzIUK2jsWKx2xcFQC4aBCnYPuUhHqrRaGO3Rlj7Aq8
+2025-12-11 16:07:57.190 | INFO  | traceId=fae6e4a8-b0c3-4af7-bf63-b1d7ed7a2d3b | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 16:07:57.237 | INFO  | traceId=fae6e4a8-b0c3-4af7-bf63-b1d7ed7a2d3b | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=4gtZFa7H&code_challenge_method=S256&code_challenge=bblh93rnThFZFT6K9YognYjLgB2IUwxMuTiJlCMe-qo
+2025-12-11 16:07:59.078 | INFO  | traceId=4d88e306-f3ae-4064-bd67-219f55a81ab9 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 16:07:59.103 | INFO  | traceId=4d88e306-f3ae-4064-bd67-219f55a81ab9 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=W0EsupXA&code_challenge_method=S256&code_challenge=-BeHSiY1WzIIyq8p7oywVek-WgveRB4ImxKv1QMA9gk
+2025-12-11 16:08:00.285 | INFO  | traceId=312cb8d2-d4a1-484f-b283-956d1eb1a8d9 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-11 16:08:00.291 | INFO  | traceId=312cb8d2-d4a1-484f-b283-956d1eb1a8d9 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=AC-UMsd7&code_challenge_method=S256&code_challenge=EbwJeRVCueWBil6puSO9ZHINPCAiarPR4DiSPICLyOw

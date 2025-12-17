@@ -1,0 +1,114 @@
+2025-12-15 13:04:17.209 | INFO  | traceId= | logStarting:53 | Starting OidcClientApplication using Java 21.0.8 with PID 3368 (C:\Users\p10427815\Desktop\OIDC_Client_Final\target\classes started by p10427815 in C:\Users\p10427815\Desktop\OIDC_Client_Final)
+2025-12-15 13:04:17.221 | INFO  | traceId= | logStartupProfileInfo:652 | No active profile set, falling back to 1 default profile: "default"
+2025-12-15 13:04:18.159 | INFO  | traceId= | registerRepositoriesIn:145 | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-15 13:04:18.243 | INFO  | traceId= | registerRepositoriesIn:213 | Finished Spring Data repository scanning in 67 ms. Found 2 JPA repository interfaces.
+2025-12-15 13:04:19.060 | INFO  | traceId= | initialize:111 | Tomcat initialized with port 8080 (http)
+2025-12-15 13:04:19.089 | INFO  | traceId= | log:168 | Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-15 13:04:19.092 | INFO  | traceId= | log:168 | Starting service [Tomcat]
+2025-12-15 13:04:19.092 | INFO  | traceId= | log:168 | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-15 13:04:19.198 | INFO  | traceId= | log:168 | Initializing Spring embedded WebApplicationContext
+2025-12-15 13:04:19.199 | INFO  | traceId= | prepareWebApplicationContext:301 | Root WebApplicationContext: initialization completed in 1912 ms
+2025-12-15 13:04:19.440 | INFO  | traceId= | logPersistenceUnitInformation:31 | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-15 13:04:19.530 | INFO  | traceId= | logVersion:44 | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-15 13:04:19.588 | INFO  | traceId= | initiateService:50 | HHH000026: Second-level cache disabled
+2025-12-15 13:04:19.993 | INFO  | traceId= | addTransformer:87 | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-15 13:04:20.048 | INFO  | traceId= | getConnection:109 | HikariPool-1 - Starting...
+2025-12-15 13:04:20.419 | INFO  | traceId= | checkFailFast:580 | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7657d90b
+2025-12-15 13:04:20.420 | INFO  | traceId= | getConnection:122 | HikariPool-1 - Start completed.
+2025-12-15 13:04:20.477 | WARN  | traceId= | constructDialect:153 | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-15 13:04:20.504 | INFO  | traceId= | logConnectionInfo:163 | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-15 13:04:21.516 | INFO  | traceId= | initiateService:59 | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-15 13:04:21.606 | INFO  | traceId= | buildNativeEntityManagerFactory:447 | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-15 13:04:21.908 | WARN  | traceId= | openEntityManagerInViewInterceptor:258 | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-15 13:04:22.484 | INFO  | traceId= | log:168 | Starting ProtocolHandler ["http-nio-8080"]
+2025-12-15 13:04:22.523 | INFO  | traceId= | start:243 | Tomcat started on port 8080 (http) with context path '/'
+2025-12-15 13:04:22.535 | INFO  | traceId= | logStarted:59 | Started OidcClientApplication in 6.059 seconds (process running for 6.584)
+2025-12-15 13:04:28.206 | INFO  | traceId= | log:168 | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-15 13:04:28.206 | INFO  | traceId= | initServletBean:532 | Initializing Servlet 'dispatcherServlet'
+2025-12-15 13:04:28.219 | INFO  | traceId= | initServletBean:554 | Completed initialization in 13 ms
+2025-12-15 13:04:28.462 | INFO  | traceId=2cc962df-9f54-45ff-87de-acdad1418cb3 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:04:28.715 | INFO  | traceId=2cc962df-9f54-45ff-87de-acdad1418cb3 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=28eVUD-6&code_challenge_method=S256&code_challenge=asNQ2XZ05LptcYDNNj2X20z6Y3CFB8ebwQbYJw__7Qs
+2025-12-15 13:04:28.892 | INFO  | traceId=8fdd8a06-7621-49c9-a619-2b83ed685fe6 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:04:28.897 | INFO  | traceId=8fdd8a06-7621-49c9-a619-2b83ed685fe6 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=nz82W-V1&code_challenge_method=S256&code_challenge=6LyP6zkONyNvfMBccCVEfwBi1uCzFV-sSS5A2HpVhHI
+2025-12-15 13:04:29.057 | INFO  | traceId=55a707a2-6517-4415-9d51-bed55fa30314 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:04:29.064 | INFO  | traceId=55a707a2-6517-4415-9d51-bed55fa30314 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=T_adXW5K&code_challenge_method=S256&code_challenge=SUZyzXlB0rnv5ZPhzwuegOS1PCyjgKNAiN43uKVe2w0
+2025-12-15 13:04:29.193 | INFO  | traceId=d188c490-373c-4b2c-8b15-260421f02ddc | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:04:29.200 | INFO  | traceId=d188c490-373c-4b2c-8b15-260421f02ddc | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=xGNYixGA&code_challenge_method=S256&code_challenge=0MWmcojK1NxFU7rG1cULlmEMkFCdN9ED2M-rKNY9DIk
+2025-12-15 13:04:29.556 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | accessToken:131 | 開始交換授權碼code,code=15151886-11a7-44b5-8649-7dbdea5deae3
+2025-12-15 13:04:30.034 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | accessToken:210 | 取得Token成功
+2025-12-15 13:04:30.034 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzMyIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1Nzc1MDY5LCJleHAiOjE3NjU3Nzg2NjksImVtYWlsIjoiaGFvMTIzQDEyMyIsIm5hbWUiOiLlvLXmma_nmpMifQ.HoVXdOGqj51HKnjRxGsxYnIz78uL5mA4CPzOwDcmTlxC7bX8N2Hb7z3aX5yKMQBYTdA_PcN9ZkrEvhMNSGun4czGR6pJkDl2vzKnsAFWMnoQ2ynV8e2rn1oLoLMs3yNMw67wsqKcdItDH6cGwQyRDfXvYw_wWdC55a44ATJfG4NjbgznG1McF8JCRkQGQm3nXED7Fhud41Lm-NqNw8lnjvvodu7j0kWN2WHbARyz49rrzKbKPRIdi-gfLcJaq4mwY4ykLHosCZiOc0Fp2So71s3VoyIEvD0vsRica8btDoa3xRvNZBVnHisYPPvKHypqYN5jGmtyzEjUwregQtF8wA
+2025-12-15 13:04:30.055 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-15 13:04:30.119 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-15 13:04:30.119 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | accessToken:221 | IdToken 驗證成功
+2025-12-15 13:04:30.166 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-15 13:04:30.189 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=38445cb4-b76f-4c18-8c4c-b690129580e3
+2025-12-15 13:04:30.214 | INFO  | traceId=d96617a8-7b29-4ff0-a8b1-29b93a464d2a | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 13:04:34.028 | INFO  | traceId=eccf78c0-5429-4fb2-a03f-41f49c92f82b | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:04:34.037 | INFO  | traceId=eccf78c0-5429-4fb2-a03f-41f49c92f82b | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=rpYpSz98&code_challenge_method=S256&code_challenge=g0M4l1ufyCSVsD-irvwO8YtgdJapljp8tlfu_yqdMQs
+2025-12-15 13:06:54.885 | INFO  | traceId=6ddcb8a7-f49d-41e4-baad-7a0bb5c32360 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:06:54.905 | INFO  | traceId=6ddcb8a7-f49d-41e4-baad-7a0bb5c32360 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=hHSaTqOa&code_challenge_method=S256&code_challenge=sdGUfpEOCpadhgc7S_-nWHdhjeHi7QN3ePOwXW7VPjY
+2025-12-15 13:07:27.480 | INFO  | traceId=b3713f80-68da-4a67-bd72-579530c48d96 | checkToken:320 | 開始checkToken API
+2025-12-15 13:07:27.486 | INFO  | traceId=b3713f80-68da-4a67-bd72-579530c48d96 | checkToken:343 | 取得Token成功
+2025-12-15 13:07:27.487 | INFO  | traceId=b3713f80-68da-4a67-bd72-579530c48d96 | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=38445cb4-b76f-4c18-8c4c-b690129580e3
+2025-12-15 13:07:27.506 | INFO  | traceId=b3713f80-68da-4a67-bd72-579530c48d96 | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 13:07:47.535 | INFO  | traceId=290a557c-397d-4da4-aa16-f0860cb21100 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 13:07:47.541 | INFO  | traceId=290a557c-397d-4da4-aa16-f0860cb21100 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=8w33ueUp&code_challenge_method=S256&code_challenge=g-E6UzmoN9vD4Lfjvc2yO_UNwMtqMzXddIf4SME_3PM
+2025-12-15 13:08:32.067 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | accessToken:131 | 開始交換授權碼code,code=a1f4d006-e456-4307-8d9a-e794c8ff860f
+2025-12-15 13:08:32.100 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | accessToken:210 | 取得Token成功
+2025-12-15 13:08:32.100 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzNSIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1Nzc1MzEyLCJleHAiOjE3NjU3Nzg5MTIsImVtYWlsIjoiaGFvMTExQGdtYWlsLmNvbSIsIm5hbWUiOiLlvLXmma_nmpMifQ.LI1AndlQnNSGz1mdQnpk-k8mpylJ1RdMywiXxnRKUvPxMc--K9lS3wC1EeCoVtF4XLOVJtivgSjHAhyaidy32SVB14iCe0KjXArGxqJqyLM285CaQfA9GW1DjPBoVYe_Mk4S-DPumhjFbckwHI5Z4_Lp3zs0Akro2xLPhC7ZlhEF5d5pFTgIQYzE3Z4KlsW-4erX0nFeumnClrgKmwA660Bd7PwuJQ07G7VfP0ZKrjxGS6RRxV17i1rJy4QRaNXhpJpTi6DuSAM7Q_SVbcDYdGYKHpiG1B1v6ye-UB4bXr9JfO8kt8sADPp4SkSgN8zrS-ux53DD7Mm-PaHC9Q8TJg
+2025-12-15 13:08:32.107 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-15 13:08:32.116 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-15 13:08:32.117 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | accessToken:221 | IdToken 驗證成功
+2025-12-15 13:08:32.122 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-15 13:08:32.125 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=a7854143-b744-4c9f-bb4b-4cb4edf79233
+2025-12-15 13:08:32.139 | INFO  | traceId=92de8604-eec4-4562-96c1-d92a2b0fd8cc | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 13:08:44.888 | INFO  | traceId=d7d78b0e-b344-49b2-b2ab-973dfb7babaa | checkToken:320 | 開始checkToken API
+2025-12-15 13:08:44.892 | INFO  | traceId=d7d78b0e-b344-49b2-b2ab-973dfb7babaa | checkToken:343 | 取得Token成功
+2025-12-15 13:08:44.892 | INFO  | traceId=d7d78b0e-b344-49b2-b2ab-973dfb7babaa | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=a7854143-b744-4c9f-bb4b-4cb4edf79233
+2025-12-15 13:08:44.906 | INFO  | traceId=d7d78b0e-b344-49b2-b2ab-973dfb7babaa | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 14:32:52.244 | INFO  | traceId=24ef1306-5be1-441c-bebe-2236d3e64772 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 14:32:52.311 | INFO  | traceId=24ef1306-5be1-441c-bebe-2236d3e64772 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=x9gxDBI7&code_challenge_method=S256&code_challenge=w2m-rH7F8yMII2uZEfHuwH8g9FSpDeG7OdVR5GgFPe4
+2025-12-15 14:32:52.693 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | accessToken:131 | 開始交換授權碼code,code=8a536960-84bd-47f6-92d2-26a3c934b803
+2025-12-15 14:32:52.843 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | accessToken:210 | 取得Token成功
+2025-12-15 14:32:52.843 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzNSIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1NzgwMzcyLCJleHAiOjE3NjU3ODM5NzIsImVtYWlsIjoiaGFvMTExQGdtYWlsLmNvbSIsIm5hbWUiOiLlvLXmma_nmpMifQ.IyzMmMHnRAvuK_3J9gimOxUanouj65mWanK2qewkBoGWzRyxkTaeTF8wjxS0zoRAZAPFDxMhOTdXJuTVN-oA2VLKMQjMyIERcRt7yaB0QVPbYg7ENukGZF-QkzcrfGnmTffU7dw4dsGSUoKhfnMmPfYTSbi102u3pr5V6TYObByyseau6-UR6-Z-3wsndDEjvD_HyRwyiliX1Ocsom19dMwWflszUT9WHgAE_HQQ_p6aAV3YlJyJy7hFMzoW8XmutFwcLWXx3JvorW3R1VQx4dhU5UHVWDHycvsEN7-eoY0Nw3rWAIYvbbFd4-94lK2tXllocM_idmNz1yx0yf2X8Q
+2025-12-15 14:32:52.855 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-15 14:32:52.870 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-15 14:32:52.871 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | accessToken:221 | IdToken 驗證成功
+2025-12-15 14:32:52.883 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-15 14:32:52.890 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=84bb0c8d-f411-4d1c-84ed-745befe2370a
+2025-12-15 14:32:52.916 | INFO  | traceId=ed689c17-2df3-40a0-b074-445c5cf4c2cb | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 14:32:53.842 | INFO  | traceId=751fe322-8c27-4331-949c-c80321a7005a | accessToken:131 | 開始交換授權碼code,code=8a536960-84bd-47f6-92d2-26a3c934b803
+2025-12-15 14:32:53.846 | ERROR | traceId=751fe322-8c27-4331-949c-c80321a7005a | accessToken:138 | 無效的 state, state=x9gxDBI7
+2025-12-15 14:32:56.377 | INFO  | traceId=cdf3c645-0339-42e5-a329-b3cbb406c3a3 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 14:32:56.382 | INFO  | traceId=cdf3c645-0339-42e5-a329-b3cbb406c3a3 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=eXlFC2tu&code_challenge_method=S256&code_challenge=6jKn2bNsfSA2ZNCgF86yu6TNzKIOUioPFHIe_sqcfnA
+2025-12-15 14:32:56.513 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | accessToken:131 | 開始交換授權碼code,code=1d296fd3-9e08-42f0-be51-c061f3a75b42
+2025-12-15 14:32:56.568 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | accessToken:210 | 取得Token成功
+2025-12-15 14:32:56.568 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzNSIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1NzgwMzc2LCJleHAiOjE3NjU3ODM5NzYsImVtYWlsIjoiaGFvMTExQGdtYWlsLmNvbSIsIm5hbWUiOiLlvLXmma_nmpMifQ.Mpr5iuOtrnvA4D_CmDSC-I7M7b2K_xcig7QzhZ0W7_8Fpcievns6WhS3niENYw_dRIG1TvLn_gz2sSAiZti4D0ScIAV3YIghGV_m1SiXHVQMp572fQdruh9KMuflatv4mdtuzKgckalv75KJ7SF1AWtGOOch9b3S8Xt7RD2htGdR8BXYlarrIKjPUXAQwa1qCltPhasX4Aq3PRGANb6mTaVevqC55pKXpwZctiMepgx4qr3WRTOjmFbyBi151Qx0GKL2lHoo6J9PxRx3EMqteycqRvdbZHr43qUE6iAuxhfGb1YHJNbKLmJB8PoaYlcZXGsvt3ZHsDeQ-FBz8Kq_NA
+2025-12-15 14:32:56.577 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-15 14:32:56.583 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-15 14:32:56.584 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | accessToken:221 | IdToken 驗證成功
+2025-12-15 14:32:56.589 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-15 14:32:56.592 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=1703bc58-b9c1-49d2-90c8-5af65bae3f1f
+2025-12-15 14:32:56.615 | INFO  | traceId=e5c1ea3e-2bd4-48c4-8964-553195464e4d | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 14:33:01.616 | INFO  | traceId=49917ea3-46e0-4d6e-b539-a9e4d6ff0a31 | accessToken:131 | 開始交換授權碼code,code=1d296fd3-9e08-42f0-be51-c061f3a75b42
+2025-12-15 14:33:01.619 | ERROR | traceId=49917ea3-46e0-4d6e-b539-a9e4d6ff0a31 | accessToken:138 | 無效的 state, state=eXlFC2tu
+2025-12-15 14:33:44.648 | INFO  | traceId=06890531-c4f4-4649-817c-e115c9243828 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 14:33:44.658 | INFO  | traceId=06890531-c4f4-4649-817c-e115c9243828 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=GZMXUUur&code_challenge_method=S256&code_challenge=lk7-s7OANHY5-c19RafvtKEPjZ2S8DAQ-Tsf5Nnfg4M
+2025-12-15 14:33:44.801 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | accessToken:131 | 開始交換授權碼code,code=54de9b6d-2f25-4881-b7e6-943c4875ee54
+2025-12-15 14:33:44.874 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | accessToken:210 | 取得Token成功
+2025-12-15 14:33:44.874 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzNSIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1NzgwNDI0LCJleHAiOjE3NjU3ODQwMjQsImVtYWlsIjoiaGFvMTExQGdtYWlsLmNvbSIsIm5hbWUiOiLlvLXmma_nmpMifQ.DXpE4U-f74-dx_xO-7KyWLbFpbsGl7OF2J8v_FdiLiEr2LmOFOK17EOp0E-IW4GT01CpBbKQd3D8JtAEMqeHmhe8BOAUMB0FnRj2uM2TbFL6kUvPMem0wf1ShZGTJTV8CAeN8hKGS-JZFIiDVg8Pwr8cVCc8tR-SjOJRY8nT1IVS5RL7Iz3aLYRbh8WiDUWAjd-LBfCSBF8YnF8y3fFgixEfx9flf7c3vfPEtkAgmLL9glNCiinatAXjg4-cemMBlB6Wukiwg8B_UIoBjiU5R422vGLOwZ5mkj1a7ks0mYCVR0HVsn2oTqoOROmQu5-YCVR2r3DrRjBsl8y_QEtt2g
+2025-12-15 14:33:44.881 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-15 14:33:44.888 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-15 14:33:44.889 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | accessToken:221 | IdToken 驗證成功
+2025-12-15 14:33:44.894 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-15 14:33:44.896 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=1562fa2f-1369-4f29-bcc8-f8515272df0b
+2025-12-15 14:33:44.915 | INFO  | traceId=4cefe2bc-30d4-41f6-bfe1-ab545f839d67 | getUserInfoByToken:299 | 取得userInfo 成功
+2025-12-15 14:34:05.434 | INFO  | traceId=db6abeea-636f-4115-9785-9e48c1368b7e | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-15 14:34:05.439 | INFO  | traceId=db6abeea-636f-4115-9785-9e48c1368b7e | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=o08pYufG&code_challenge_method=S256&code_challenge=7e60BOcw6trGLjBtTsT-N1ZFb85YXFbyfbjeHZ02m-M
