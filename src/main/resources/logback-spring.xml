@@ -1,7 +1,7 @@
 <configuration>
 
 	<property name="LOG_PATTERN"
-		value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | traceId=%X{traceId} | %class{30}.%method | %msg%n" />
+		value="%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | traceId=%X{traceId} | %method:%line | %msg%n" />
 
 	<!-- 寫入檔案 -->
 	<appender name="FILE"

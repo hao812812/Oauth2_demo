@@ -1,0 +1,46 @@
+2025-12-12 15:56:35.452 | INFO  | traceId= | logStarting:53 | Starting OidcClientApplication using Java 21.0.8 with PID 37016 (C:\Users\p10427815\Desktop\OIDC_Client_Final\target\classes started by p10427815 in C:\Users\p10427815\Desktop\OIDC_Client_Final)
+2025-12-12 15:56:35.467 | INFO  | traceId= | logStartupProfileInfo:652 | No active profile set, falling back to 1 default profile: "default"
+2025-12-12 15:56:37.317 | INFO  | traceId= | registerRepositoriesIn:145 | Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-12 15:56:37.506 | INFO  | traceId= | registerRepositoriesIn:213 | Finished Spring Data repository scanning in 169 ms. Found 2 JPA repository interfaces.
+2025-12-12 15:56:38.886 | INFO  | traceId= | initialize:111 | Tomcat initialized with port 8080 (http)
+2025-12-12 15:56:38.911 | INFO  | traceId= | log:168 | Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-12 15:56:38.915 | INFO  | traceId= | log:168 | Starting service [Tomcat]
+2025-12-12 15:56:38.916 | INFO  | traceId= | log:168 | Starting Servlet engine: [Apache Tomcat/10.1.46]
+2025-12-12 15:56:39.079 | INFO  | traceId= | log:168 | Initializing Spring embedded WebApplicationContext
+2025-12-12 15:56:39.081 | INFO  | traceId= | prepareWebApplicationContext:301 | Root WebApplicationContext: initialization completed in 3507 ms
+2025-12-12 15:56:39.542 | INFO  | traceId= | logPersistenceUnitInformation:31 | HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-12 15:56:39.713 | INFO  | traceId= | logVersion:44 | HHH000412: Hibernate ORM core version 6.6.29.Final
+2025-12-12 15:56:39.838 | INFO  | traceId= | initiateService:50 | HHH000026: Second-level cache disabled
+2025-12-12 15:56:40.547 | INFO  | traceId= | addTransformer:87 | No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-12 15:56:40.650 | INFO  | traceId= | getConnection:109 | HikariPool-1 - Starting...
+2025-12-12 15:56:41.553 | INFO  | traceId= | checkFailFast:580 | HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e3900dc
+2025-12-12 15:56:41.559 | INFO  | traceId= | getConnection:122 | HikariPool-1 - Start completed.
+2025-12-12 15:56:41.739 | WARN  | traceId= | constructDialect:153 | HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-12 15:56:41.797 | INFO  | traceId= | logConnectionInfo:163 | HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-12-12 15:56:43.495 | INFO  | traceId= | initiateService:59 | HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-12 15:56:43.611 | INFO  | traceId= | buildNativeEntityManagerFactory:447 | Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-12 15:56:44.076 | WARN  | traceId= | openEntityManagerInViewInterceptor:258 | spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-12 15:56:44.603 | INFO  | traceId= | log:168 | Starting ProtocolHandler ["http-nio-8080"]
+2025-12-12 15:56:44.655 | INFO  | traceId= | start:243 | Tomcat started on port 8080 (http) with context path '/'
+2025-12-12 15:56:44.669 | INFO  | traceId= | logStarted:59 | Started OidcClientApplication in 10.521 seconds (process running for 12.454)
+2025-12-12 16:05:30.946 | INFO  | traceId= | log:168 | Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-12 16:05:30.947 | INFO  | traceId= | initServletBean:532 | Initializing Servlet 'dispatcherServlet'
+2025-12-12 16:05:30.949 | INFO  | traceId= | initServletBean:554 | Completed initialization in 2 ms
+2025-12-12 16:05:31.168 | INFO  | traceId=ba6dcca7-6361-4606-bfea-c683cb695a42 | generateAuthUrl:78 | 開始組裝oauth2 授權 url
+2025-12-12 16:05:31.395 | INFO  | traceId=ba6dcca7-6361-4606-bfea-c683cb695a42 | generateAuthUrl:111 | 組裝授權URL成功 url:http://localhost:9090/api/oauth/authorize?response_type=code&client_id=12345.apps.picusercontent.com&scope=profile+openid&redirect_uri=http://localhost:4200/callback&state=cHGd8vmF&code_challenge_method=S256&code_challenge=mLXc9_E8KjFnsbq04dnz7NtMYpHFJaB_ztX-_ui8Om0
+2025-12-12 16:05:46.653 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | accessToken:131 | 開始交換授權碼code,code=263fbce0-8e92-4362-a265-6982bd3e5970
+2025-12-12 16:05:46.946 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | accessToken:210 | 取得Token成功
+2025-12-12 16:05:46.947 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | validateAndParseIdToken:35 | 開始驗證idToken:eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjkwOTAiLCJzdWIiOiIzMyIsImF1ZCI6IjEyMzQ1LmFwcHMucGljdXNlcmNvbnRlbnQuY29tIiwiaWF0IjoxNzY1NTI2NzQ2LCJleHAiOjE3NjU1MzAzNDYsImVtYWlsIjoiaGFvMTIzQDEyMyIsIm5hbWUiOiLlvLXmma_nmpMifQ.CczaEEQ7RSdYoRJxk5WCZZGEzVjoI7vSs58_MogGw5Y-fIF9Pk9n1omcAyZLzeLRHto6OSQr3ctCpYNsgHUBEwoQgJ9XYHUJ5dsp4pyO-QM8R1IVhC6_FigfBNGGi-jc_ewylmoessK7A3ja62jCluinm7pfhZrDUcbzk1Ez2GTDNVJB4DFZR9DbZxNasPDDiIc1UJskBYmmsjdBrQuHA1f-Fdo_ym87i0QUnIoAe5t6ZLqg1Ca86boZLeTGRIgiaQMN18MnkiASbmt4bMlZQkayZepwr09lFK95RGqpxW-u66q_ylyZ9x5CxIYoYnkDLA5udHn2INfu8tEANkdw6A
+2025-12-12 16:05:46.962 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | getCachedPublicKey:94 | 取得 JKS 成功
+2025-12-12 16:05:47.043 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | validateAndParseIdToken:56 | JWT 驗證成功
+2025-12-12 16:05:47.044 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | accessToken:221 | IdToken 驗證成功
+2025-12-12 16:05:47.092 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | accessToken:252 | 設置 sessionID 到Cookie
+2025-12-12 16:05:47.113 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | getUserInfoByToken:274 | 開始呼叫userInfo API, AccessToken=fbf50597-20b1-4345-ad93-1b75170eb61a
+2025-12-12 16:05:47.144 | INFO  | traceId=5a2c1b99-0b49-4294-82ce-0115fcdde392 | getUserInfoByToken:299 | 取得userInfo 成功

@@ -20,15 +20,4 @@ public class RequestLogInterceptor implements HandlerInterceptor {
 		return true;
 	}
 
-	@Override
-	public void afterCompletion(HttpServletRequest req, HttpServletResponse res, Object handler, Exception ex)
-			throws Exception {
-
-		long start = (long) req.getAttribute("startTime");
-		long duration = System.currentTimeMillis() - start;
-
-		log.info("API: {} {} | Status={} | 耗時={}ms", req.getMethod(), req.getRequestURI(), res.getStatus(), duration);
-
-	}
-
 }
