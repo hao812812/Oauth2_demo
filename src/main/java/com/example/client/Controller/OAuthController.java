@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.client.Dto.ExchangeTokenRequest;
 import com.example.client.Service.OAuthService;
 
-import Dto.commonRes;
+import com.example.client.Dto.commonRes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 

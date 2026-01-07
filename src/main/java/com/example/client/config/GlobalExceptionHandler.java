@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.example.pic.Exception.BaseException;
+import com.example.client.Exception.BaseException;
 
-import Dto.commonRes;
+import com.example.client.Dto.commonRes;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

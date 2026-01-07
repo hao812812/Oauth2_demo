@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.client.Dto.ExchangeTokenRequest;
 
-import Dto.commonRes;
+import com.example.client.Dto.commonRes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
