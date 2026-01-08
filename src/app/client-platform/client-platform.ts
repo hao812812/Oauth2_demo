@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-client-platform',
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './client-platform.html',
   styleUrl: './client-platform.css',
 })
-export class ClientPlatform implements OnInit{
-  constructor( private http: HttpClient) {};
+export class ClientPlatform implements OnInit {
+  constructor(private http: HttpClient) { };
 
   ngOnInit(): void {
     //先打api確認使用者是否免登入
@@ -23,15 +23,15 @@ export class ClientPlatform implements OnInit{
   Onbutton() {
     let body = {};
     //取得 authorizationUrl
-    let url = 'http://localhost:8080/client/oauth/authorization-url';
+    let url = 'https://oauth2-client-backend.onrender.com/client/oauth/authorization-url';
     this.http.post<CommonRes<AuthorizationData>>(url, body).subscribe((res) => {
-      if(res.success==false){
+      if (res.success == false) {
         alert("取得授權網址失敗，請稍後再試");
         return;
       }
       //傳送 authorizationUrl 至 B平台 後端
       const authorizationUrl = res.data.authorizationUrl;
-       window.location.href = authorizationUrl;
+      window.location.href = authorizationUrl;
     });
   }
 }

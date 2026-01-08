@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
 })
 //使用者登入後 的主頁
 export class LoginHome {
-  constructor(private http: HttpClient,private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   userInfo() {
-    let url = 'http://localhost:8080/client/oauth/checkToken';
-    this.http.get<CommonRes<userInfo>>(url,{ withCredentials: true }).subscribe((res) => {
-      if (!res.success){
+    let url = 'https://oauth2-client-backend.onrender.com/client/oauth/checkToken';
+    this.http.get<CommonRes<userInfo>>(url, { withCredentials: true }).subscribe((res) => {
+      if (!res.success) {
         alert("請重新登入");
-         this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
         return;
       };
       const userId = res.data.id;

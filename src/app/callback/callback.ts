@@ -11,7 +11,7 @@ import { CommonRes, userInfo } from '../interface/commRes';
   styleUrl: './callback.css',
 })
 export class Callback implements OnInit {
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -24,7 +24,7 @@ export class Callback implements OnInit {
       //發送code 請求給 授權平台B 後端
       const code = this.route.snapshot.queryParamMap.get('code');
       const state = this.route.snapshot.queryParamMap.get('state');
-      const url = 'http://localhost:8080/client/oauth/sendCode';
+      const url = 'https://oauth2-client-backend.onrender.com/client/oauth/sendCode';
       const body = {
         code: code,
         state: state,

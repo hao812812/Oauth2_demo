@@ -10,7 +10,7 @@ import { CommonRes, userInfo } from '../interface/commRes';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   login: boolean = false;
   mail?: string;
@@ -32,9 +32,9 @@ export class Home implements OnInit {
   goToLogin() {
     this.router.navigate(['/login']);
   }
-  logout() {}
+  logout() { }
   removeBinding() {
-    const url = 'http://localhost:9090/api/oauth/revokedSessionId';
+    const url = 'https://oauth2-demo-provider.onrender.com /api/oauth/revokedSessionId';
     const body = {};
     this.http.post<CommonRes<userInfo>>(url, body, { withCredentials: true }).subscribe((res) => {
 
@@ -46,7 +46,7 @@ export class Home implements OnInit {
     });
   }
 
-  goToHome(){
-     this.router.navigate(['/login-home']);
+  goToHome() {
+    this.router.navigate(['/login-home']);
   }
 }
