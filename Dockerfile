@@ -1,7 +1,8 @@
 FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /app
-COPY OIDC_PIC/mvnw pom.xml ./
+# copy mvnw and pom.xml from OIDC_PIC
+COPY OIDC_PIC/mvnw OIDC_PIC/pom.xml ./
 COPY OIDC_PIC/.mvn .mvn
 RUN chmod +x mvnw
 RUN ./mvnw -q -DskipTests dependency:go-offline
