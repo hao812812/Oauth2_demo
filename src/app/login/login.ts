@@ -29,7 +29,7 @@ export class Login implements OnInit {
     captchaInput: new FormControl(''),
   });
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.state = params['state'];
@@ -40,13 +40,13 @@ export class Login implements OnInit {
 
   //登入
   checkAccount() {
-    const url = 'http://localhost:9090/api/login';
+    const url = 'https://oauth2-demo-provider.onrender.com/api/login';
     let body = {
       userAccount: this.accountGroup.value.userAccount,
       userPassword: this.accountGroup.value.userPassword,
     };
 
-    this.http.post<apiResponse>(url, body,{withCredentials:true}).subscribe((data) => {
+    this.http.post<apiResponse>(url, body, { withCredentials: true }).subscribe((data) => {
       if (!data.success) {
         alert(data.message);
         return;
@@ -73,7 +73,7 @@ export class Login implements OnInit {
 
 
     this.http
-      .get('http://localhost:9090/api/captcha/generate', {
+      .get('https://oauth2-demo-provider.onrender.com/api/captcha/generate', {
         responseType: 'blob', //二進位檔案
         withCredentials: true,
       })
@@ -90,7 +90,7 @@ export class Login implements OnInit {
   VerificationCode() {
     this.http
       .post<apiResponse>(
-        'http://localhost:9090/api/captcha/verify',
+        'https://oauth2-demo-provider.onrender.com/api/captcha/verify',
         {
           captcha: this.accountGroup.value.captchaInput,
         },

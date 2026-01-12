@@ -11,7 +11,7 @@ import { apiResponse } from '../interface/memberRegister';
   styleUrl: './authentication.css',
 })
 export class Authentication implements OnInit {
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
   mail: string = '';
   account: string = '';
   name: string = '';
@@ -33,12 +33,12 @@ export class Authentication implements OnInit {
   agreeButton() {
     //call 後端 approve api
     const authorizationUrl =
-      'http://localhost:9090/api/oauth/approve?' +
+      'https://oauth2-demo-provider.onrender.com/api/oauth/approve?' +
       'user_id=' +
       this.id +
       '&state=' +
       this.state +
-      '&redirect_uri='+this.redirectUri;
+      '&redirect_uri=' + this.redirectUri;
     window.location.href = authorizationUrl;
   }
 }

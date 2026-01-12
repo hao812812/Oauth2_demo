@@ -29,7 +29,7 @@ export class RegisterAccount implements OnInit {
     userPasswordCheck: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.state = params['state'];
@@ -58,7 +58,7 @@ export class RegisterAccount implements OnInit {
       userPassword: this.accountGroup.value.userPassword,
       userName: this.accountGroup.value.userName,
     };
-    let url = 'http://localhost:9090/api/register';
+    let url = 'https://oauth2-demo-provider.onrender.com/api/register';
     this.http.post<apiResponse>(url, body).subscribe((data) => {
       if (!data.success) {
         alert('註冊失敗');
