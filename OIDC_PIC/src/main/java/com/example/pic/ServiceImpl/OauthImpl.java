@@ -153,7 +153,7 @@ public class OauthImpl implements OauthService {
 		// 導向b平台 登入頁 (Angular)
 		try {
 			String angularLogin = String.format(
-					"http://localhost:4300/login?client_id=%s&redirect_uri=%s&scope=%s&state=%s&code_challenge=%s&code_challenge_method=%s",
+					"https://oauth2-provider-frontend.onrender.com/login?client_id=%s&redirect_uri=%s&scope=%s&state=%s&code_challenge=%s&code_challenge_method=%s",
 					URLEncoder.encode(clientId, StandardCharsets.UTF_8),
 					URLEncoder.encode(redirectUri, StandardCharsets.UTF_8),
 					URLEncoder.encode(scope, StandardCharsets.UTF_8), URLEncoder.encode(state, StandardCharsets.UTF_8),
@@ -185,7 +185,6 @@ public class OauthImpl implements OauthService {
 		String code_challenge = request.get("code_challenge");
 		String code_challenge_method = request.get("code_challenge_method");
 		log.info("收到使用者授權同意, state={}, userId={}", state, userId);
-
 
 		// 建立授權碼
 		String code = UUID.randomUUID().toString();
@@ -402,10 +401,10 @@ public class OauthImpl implements OauthService {
 		long nowMillis = System.currentTimeMillis();
 		String newAccessToken = UUID.randomUUID().toString();
 
-		String idToken = Jwts.builder().setIssuer("http://localhost:9090")
+		String idToken = Jwts.builder().setIssuer("https://oauth2-demo-provider.onrender.com")
 				.setSubject(String.valueOf(tokenEntity.getUserId())).setAudience(clientId)
 				.setIssuedAt(new Date(nowMillis)).setExpiration(new Date(nowMillis + ACCESS_TOKEN_TTL_SECONDS * 1000))// 1hr
-																														// 過期
+				// 過期
 				.claim("email", userInfo.getMail()).claim("name", userInfo.getName())
 				.signWith(keyPair.getPrivate(), SignatureAlgorithm.RS256).compact();
 
@@ -510,7 +509,7 @@ public class OauthImpl implements OauthService {
 		String refreshToken = UUID.randomUUID().toString();
 
 		// 生成 id_token
-		String idToken = Jwts.builder().setIssuer("http://localhost:9090")
+		String idToken = Jwts.builder().setIssuer("https://oauth2-demo-provider.onrender.com")
 				.setSubject(String.valueOf(codeEntity.getUserId())).setAudience(clientId)
 				.setIssuedAt(new Date(nowMillis)).setExpiration(new Date(nowMillis + 3600_000))
 				.claim("email", userInfo.getMail()).claim("name", userInfo.getName())

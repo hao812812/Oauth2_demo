@@ -24,7 +24,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "http://localhost:4300" }, allowCredentials = "true")
+@CrossOrigin(origins = { "https://oauth2-client-frontend1.onrender.com",
+		"https://oauth2-provider-frontend.onrender.com" }, allowCredentials = "true")
 @RequestMapping("/api")
 public class OidcController {
 
@@ -61,7 +62,7 @@ public class OidcController {
 	public void getAuthCode(@RequestParam Map<String, String> params, HttpServletRequest httpRequest,
 			HttpServletResponse response) throws IOException {
 		oauthService.getAuthUrl(params, httpRequest, response);
-		 
+
 	}
 
 	/*
@@ -71,7 +72,7 @@ public class OidcController {
 	public void approve(@RequestParam Map<String, String> params, HttpServletResponse response)
 			throws IOException {
 
-	 oauthService.approveAuthorization(params, response);
+		oauthService.approveAuthorization(params, response);
 	}
 
 	/**

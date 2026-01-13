@@ -48,11 +48,11 @@ public class JWKController {
 	};
 
 	/**
-	 *  configuration json文件
+	 * configuration json文件
 	 */
 	@GetMapping("/openid-configuration")
 	public Map<String, Object> openidConfiguration() {
-		String issuer = "http://localhost:9090";
+		String issuer = "https://oauth2-demo-provider.onrender.com";
 
 		Map<String, Object> config = new HashMap<>();
 		config.put("issuer", issuer);
@@ -66,7 +66,7 @@ public class JWKController {
 		config.put("id_token_signing_alg_values_supported", List.of("RS256"));
 		config.put("scopes_supported", List.of("openid", "profile"));
 		config.put("end_session_endpoint", issuer + "/oauth/revokedSessionId");
-		config.put("claims_supported", List.of("sub", "iss", "aud", "exp", "iat","email","name"));
+		config.put("claims_supported", List.of("sub", "iss", "aud", "exp", "iat", "email", "name"));
 		return config;
 
 	}
