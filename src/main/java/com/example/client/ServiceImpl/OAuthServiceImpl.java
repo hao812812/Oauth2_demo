@@ -82,7 +82,8 @@ public class OAuthServiceImpl implements OAuthService {
 
 			UriComponentsBuilder urlBuilder = UriComponentsBuilder.fromUriString(endpoint)
 					.queryParam("response_type", "code").queryParam("client_id", client_id)
-					.queryParam("scope", "profile+openid").queryParam("redirect_uri", "http://localhost:4200/callback")
+					.queryParam("scope", "profile+openid")
+					.queryParam("redirect_uri", "https://oauth2-client-frontend1.onrender.com/callback")
 					.queryParam("state", state);
 
 			// PKCE 的部分
@@ -124,7 +125,7 @@ public class OAuthServiceImpl implements OAuthService {
 	 */
 	@Override
 	public commonRes<Map<String, Object>> accessToken(ExchangeTokenRequest request, HttpServletResponse response) {
-		String tokenUrl = "http://localhost:9090/api/oauth/token";
+		String tokenUrl = "https://oauth2-client-backend.onrender.com/api/oauth/token";
 
 		String code = request.getCode();
 		String state = request.getState();
@@ -151,7 +152,7 @@ public class OAuthServiceImpl implements OAuthService {
 		body.add("client_id", client_id);
 		body.add("client_secret", client_secret);
 		body.add("code", code);
-		body.add("redirect_uri", "http://localhost:4200/callback");
+		body.add("redirect_uri", "https://oauth2-client-frontend1.onrender.com/callback");
 		// 在 request body 中添加 PKCE 的 code_verifier
 		body.add("code_verifier", oauthState.getCode_verifier());
 
@@ -268,7 +269,7 @@ public class OAuthServiceImpl implements OAuthService {
 	 */
 	@Override
 	public commonRes<Map<String, Object>> getUserInfoByToken(String accessToken) {
-		String userInfoUrl = "http://localhost:9090/api/oauth/userInfo";
+		String userInfoUrl = "https://oauth2-client-backend.onrender.com/api/oauth/userInfo";
 
 		try {
 			log.info("開始呼叫userInfo API, AccessToken={}", accessToken);
@@ -369,7 +370,7 @@ public class OAuthServiceImpl implements OAuthService {
 
 		// 用refreshToken 換發新AccessToken
 		log.info("accessToken已過期，開始用refreshToken換發新token");
-		String tokenUrl = "http://localhost:9090/api/oauth/token";
+		String tokenUrl = "https://oauth2-client-backend.onrender.com/api/oauth/token";
 		// 建立 POST 請求 設置表頭
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);// 資料是表單格式

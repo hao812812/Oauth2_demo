@@ -25,7 +25,7 @@ import io.jsonwebtoken.Jwts;
 public class JwtImpl {
 
 	private static final Logger log = LoggerFactory.getLogger(OAuthServiceImpl.class);
-	private static final String JWKS_URL = "http://localhost:9090/.well-known/jwks.json";
+	private static final String JWKS_URL = "https://oauth2-client-backend.onrender.com/.well-known/jwks.json";
 
 	/**
 	 * 驗證 id_token (ok

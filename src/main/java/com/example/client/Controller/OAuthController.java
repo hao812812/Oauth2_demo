@@ -18,7 +18,7 @@ import com.example.client.Dto.commonRes;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://oauth2-client-frontend1.onrender.com")
 @RequestMapping("/client/oauth")
 @RestController
 public class OAuthController {
