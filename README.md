@@ -2,10 +2,7 @@
  本專案 自建Web雙平台的會員系統，示範 OAuth2 / OpenID Connect 授權流程，包含 Authorization Server（身份提供者）與 Client（應用端）兩個部分，完整呈現 Authorization Code Flow（含 PKCE）在實務中的運作方式。
 - 達成 client平台第三方登入、免登入(sso)功能。
  <img width="1913" height="580" alt="image" src="https://github.com/user-attachments/assets/9af774d4-55d4-4ec0-8996-a3e8e974f4c1" />
- <img width="406" height="566" alt="image" src="https://github.com/user-attachments/assets/76817ce1-83cc-4ac6-a2ee-7ea4bbb4ee6e" />
- <img width="621" height="619" alt="image" src="https://github.com/user-attachments/assets/34a6df8b-572c-48cd-82d2-07847dc400d2" />
- <img width="449" height="324" alt="image" src="https://github.com/user-attachments/assets/f46d586c-0888-43d3-a563-77a66dc1857a" />
- <img width="1919" height="368" alt="image" src="https://github.com/user-attachments/assets/0ecc0bbb-1adf-41df-b0ca-6c1e94ece123" />
+
 
 
 
@@ -42,5 +39,6 @@
 
 # 系統架構
 <img width="1774" height="645" alt="image" src="https://github.com/user-attachments/assets/a31a8118-5894-46b1-bdf8-e8ac30fe9cec" />
+
 
 
